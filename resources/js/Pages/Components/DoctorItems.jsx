@@ -44,22 +44,21 @@ export default function DoctorItems(props) {
                 <div className="ml-2 text-yellow-400">
                   {/* Star button */}
                   <button className="text-yellow-400">
-                    {/* Star SVG icon */}
+                    {/* Fully Filled Star SVG icon */}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-3.5 w-3.5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
                     >
                       <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16l-4-4m4 4l4-4m-4 4V6"
+                        fillRule="evenodd"
+                        d="M10 2a.75.75 0 01.678.418l1.427 2.895 3.218.47a.75.75 0 01.416 1.285l-2.324 2.262.547 3.186a.75.75 0 01-.776.828.75.75 0 01-.392-.107L10 13.347l-2.549 1.342a.75.75 0 01-.393.107.75.75 0 01-.377-.107.75.75 0 01-.393-.927l.547-3.186-2.324-2.262a.75.75 0 01-.36-.819l.547-3.187L2.679 6.783a.75.75 0 01-.098-.834.75.75 0 01.692-.437l3.218-.469 1.427-2.895a.75.75 0 01.678-.418z"
+                        clipRule="evenodd"
                       />
                     </svg>
                   </button>
+
                 </div>
                 <span className="ml-1 text-gray-600 dark:text-gray-400" style={{ fontSize: '12px' }}>
                   {/* Default rating label */}
@@ -70,7 +69,7 @@ export default function DoctorItems(props) {
                   {card.numberOfPatients}
                 </span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div style={{ display: 'flex', alignItems: 'stretch' }}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="w-4 h-4 mr-1 text-gray-600 dark:text-gray-400"
