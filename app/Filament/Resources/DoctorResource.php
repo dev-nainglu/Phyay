@@ -6,6 +6,8 @@ use App\Filament\Resources\DoctorResource\Pages;
 use App\Filament\Resources\DoctorResource\RelationManagers;
 use App\Models\Doctor;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -25,13 +27,13 @@ class DoctorResource extends Resource
         return $form
             ->schema([
                 // name
-                Forms\Components\TextInput::make('name')
+                TextInput::make('name')
                     ->autofocus()
                     ->required()
                     ->maxLength(255)
                     ->placeholder(__('Name')),
                 // category select id display name
-                Forms\Components\Select::make('category_id')
+                Select::make('category_id')
                     ->options(
                         \App\Models\Category::all()
                             ->pluck('name', 'id')
@@ -42,14 +44,14 @@ class DoctorResource extends Resource
                     ->searchable()
                     ->native(false),
                 // experience
-                Forms\Components\TextInput::make('experience')
+                TextInput::make('experience')
                     ->required()
                     ->numeric()
                     ->minValue(0)
                     ->placeholder(__('Experience'))
                     ->suffix(__('years')),
                 // fee
-                Forms\Components\TextInput::make('fee')
+                TextInput::make('fee')
                     ->numeric()
                     ->minValue(0)
                     ->step(1000)

@@ -2,10 +2,11 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CategoryResource\Pages;
-use App\Filament\Resources\CategoryResource\RelationManagers;
-use App\Models\Category;
+use App\Filament\Resources\PatientResource\Pages;
+use App\Filament\Resources\PatientResource\RelationManagers;
+use App\Models\Patient;
 use Filament\Forms;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -15,9 +16,12 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class CategoryResource extends Resource
+use Ysfkaya\FilamentPhoneInput\Forms\PhoneInput;
+use Ysfkaya\FilamentPhoneInput\Tables\PhoneInputColumn;
+
+class PatientResource extends Resource
 {
-    protected static ?string $model = Category::class;
+    protected static ?string $model = Patient::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -25,9 +29,20 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
+                //
                 TextInput::make('name')
+                    ->maxLength(255)
                     ->required(),
-                TextInput::make('description'),
+                PhoneInput::make('phone_number')
+                    ->onlyCountries(['MM'])
+                    ->label('Phone Number')
+                    ->required(),
+                DatePicker::make('date_of_birth')
+                    ->placeholder('YYYY-MM-DD')
+                    ->label('Date of Birth')
+                    ->maxDate(now())
+                    ->native(false)
+                    ->required(),
             ]);
     }
 
@@ -35,18 +50,14 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
+                //
                 TextColumn::make('name')
-                    ->searchable(),
-                TextColumn::make('description')
-                    ->searchable(),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->searchable()
+                    ->sortable(),
+                PhoneInputColumn::make('phone_number'),
+                TextColumn::make('date_of_birth')
+                    ->searchable()
+                    ->sortable(),
             ])
             ->filters([
                 //
@@ -74,9 +85,9 @@ class CategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCategories::route('/'),
-            'create' => Pages\CreateCategory::route('/create'),
-            'edit' => Pages\EditCategory::route('/{record}/edit'),
+            'index' => Pages\ListPatients::route('/'),
+            'create' => Pages\CreatePatient::route('/create'),
+            'edit' => Pages\EditPatient::route('/{record}/edit'),
         ];
     }
 }
