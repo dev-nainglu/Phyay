@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->integer('experience');
-            $table->foreignId('category_id')->constrained('categories');
+            $table->foreignId('category_id')->constrained();
             $table->string('fee');
             $table->timestamps();
         });

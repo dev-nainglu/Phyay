@@ -11,7 +11,7 @@ class Category extends Model
     use HasFactory;
 
     // belongsTo relationship with Doctor
-    public function doctors(): hasMany
+    public function doctors(): HasMany
     {
         return $this->hasMany(Doctor::class);
     }
