@@ -17,11 +17,19 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Layouts/Wall');
+    return Inertia::render('AppLayout');
 });
 
 Route::get('/doctors', function () {
     return Inertia::render('Layouts/DoctorList');
+});
+
+Route::get('/appointments', function () {
+    return Inertia::render('Layouts/AppointmentList');
+});
+
+Route::get('/myprofile', function () {
+    return Inertia::render('Layouts/Profile');
 });
 
 Route::get('/doctors/{id}', function () {
