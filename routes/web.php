@@ -24,6 +24,10 @@ Route::get('/doctors', function () {
     return Inertia::render('Layouts/DoctorList');
 });
 
+Route::get('/doctors/{id}', function () {
+    return Inertia::render('DoctorProfile');
+});
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
