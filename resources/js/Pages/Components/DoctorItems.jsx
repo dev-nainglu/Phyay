@@ -6,7 +6,7 @@ export default function DoctorItems(props) {
     {
       name: 'Soe Thura',
       numberOfPatients: '(320)',
-      rating: '4.5', 
+      rating: '4.5',
       position: 'Doctor',
       numberOfExperience: '12 Years',
       fees: '3,000 MMK'   // Default rating label
@@ -14,7 +14,7 @@ export default function DoctorItems(props) {
     {
         name: 'Naing Lu',
         numberOfPatients: '(320)',
-        rating: '4.5', 
+        rating: '4.5',
         position: 'Therapist',
         numberOfExperience: '20 Years',
         fees: '3,000 MMK'        // Default rating label
@@ -28,7 +28,7 @@ export default function DoctorItems(props) {
         {cards.map((card, index) => (
           <div
             key={index} // Use a unique key for each item in the map
-            className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+            className="max-w-sm bg-white border border-gray-200 rounded-lg shadow"
           >
               <img
                 className="rounded-t-lg"
@@ -38,7 +38,7 @@ export default function DoctorItems(props) {
               />
             <div className="p-5">
               <div className="flex items-center mb-2">
-                <h5 className="text-1xl font-bold tracking-tight text-gray-900 dark:text-white" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontSize: '16px' }}>
+                <h5 className="text-1xl font-bold tracking-tight text-gray-900" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontSize: '16px' }}>
                         {card.name}
                 </h5>
                 <div className="ml-2 text-yellow-400">
