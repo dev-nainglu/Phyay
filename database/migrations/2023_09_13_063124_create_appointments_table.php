@@ -16,8 +16,8 @@ return new class extends Migration {
             $table->foreignId('patient_id')->constrained('patients');
             $table->dateTime('appointment_date');
             $table->integer('price');
-            $table->timestamps();
             $table->enum('status', ['upcoming', 'completed', 'cancelled'])->default('upcoming');
+            $table->timestamps();
         });
     }
 
