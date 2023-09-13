@@ -4,20 +4,24 @@ export default function DoctorItems(props) {
 
   const cards = [
     {
+      id: 1,
       name: 'Soe Thura',
       numberOfPatients: '(320)',
       rating: '4.5',
       position: 'Doctor',
       numberOfExperience: '12 Years',
-      fees: '3,000 MMK'   // Default rating label
+      fees: '3,000 MMK',  // Default rating label
+      category: 'Disorder'
     },
     {
+        id: 2,
         name: 'Naing Lu',
         numberOfPatients: '(320)',
         rating: '4.5',
         position: 'Therapist',
         numberOfExperience: '20 Years',
-        fees: '3,000 MMK'        // Default rating label
+        fees: '3,000 MMK',        // Default rating label
+        category: 'Anxiety'
     },
     // Add more card data as needed
   ];
@@ -119,7 +123,7 @@ export default function DoctorItems(props) {
               </div>
               <div className="mt-3">
                   <a
-                    href="#"
+                    href={"/doctors/" + card.id}
                     className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
                     Make Appointment

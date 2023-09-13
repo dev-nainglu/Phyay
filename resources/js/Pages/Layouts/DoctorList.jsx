@@ -5,8 +5,8 @@ export default function Wall(props){
 
     return (
         <>
-            <div class="overflow-x-scroll mt-[60px]" style={{scrollWidth: "none"}}>
-                <HorizontalCategoryItems />
+            <div className="overflow-x-scroll mt-[60px] no-scrollbar">
+                {props.show != 'noshow' && <HorizontalCategoryItems />}
             </div>
             <DoctorItems />
 

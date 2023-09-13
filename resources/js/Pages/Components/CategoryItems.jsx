@@ -55,7 +55,8 @@ export default function CategoryItems(props){
         <>
             <div className="grid grid-cols-4 gap-4 mt-2" key="">
                 {cards.map((card, index) => (
-                    <div key={index} className="text-center">
+                    <a key={index} href={"/render?type=category&value=" + card.categoryTitle}>
+                    <div  className="text-center">
                     <div className="rounded-full text-1xl font-bold tracking-tight text-gray-900 dark:text-white" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', padding: 20, backgroundColor: '#EBF1FF' }}>
                         <img
                         src={card.imgSrc}
@@ -66,8 +67,9 @@ export default function CategoryItems(props){
                     <div className = "mb -2">
                     <h5 className="text-1xl font-bold tracking-tight text-gray-900 dark:text-black" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontSize: '12px', lineHeight: '1.2' }}>{card.categoryTitle}</h5> {/* Add category title */}
                     </div>
-                    
                     </div>
+                    </a>
+
             ))}
         </div>
         </>
