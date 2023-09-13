@@ -1,13 +1,10 @@
 import DoctorItems from '../Components/DoctorItems';
 import CategoryItems from '../Components/CategoryItems';
-import AppLayout from '../AppLayout';
-
-import React from 'react';
+import HorizontalCategoryItems from '../Components/HorizontalCategoryItems';
 
 export default function Wall(props) {
   return (
     <>
-      <AppLayout>
 
         <form>
             <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
@@ -44,6 +41,9 @@ export default function Wall(props) {
           <h2 style={{fontSize: '18px', fontWeight: '600' }}>Top Doctors</h2>
           <a className="text-blue-800 text-underline text-sm" href="#">View All</a>
         </div>
+        <div class="overflow-x-scroll ...">
+            <HorizontalCategoryItems />
+        </div>
         <DoctorItems />
 
         <div className="mt-6 flex justify-between">
@@ -52,7 +52,6 @@ export default function Wall(props) {
         </div>
         <DoctorItems />
         <div className="h-20"></div>
-      </AppLayout>
     </>
   );
 }
