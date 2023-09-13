@@ -53,21 +53,23 @@ export default function CategoryItems(props){
 
     return (
         <>
-            <div className="grid grid-cols-4 gap-2 mt-2" key="">
-                {cards.map((card) => (
-                    <div key={card.id} className="text-center">
-                    <div className="text-1xl font-bold tracking-tight text-gray-900 dark:text-white" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontSize: '12px' }}>
+            <div className="grid grid-cols-4 gap-4 mt-2" key="">
+                {cards.map((card, index) => (
+                    <div key={index} className="text-center">
+                    <div className="rounded-full text-1xl font-bold tracking-tight text-gray-900 dark:text-white" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', padding: 20, backgroundColor: '#EBF1FF' }}>
                         <img
                         src={card.imgSrc}
                         alt="Category Image"
                         className="rounded-full w-full h-full object-cover"
                         />
                     </div>
-                    <div className="text-1xl font-bold tracking-tight text-gray-900 dark:text-white" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontSize: '12px' }}>{card.categoryTitle}</div> {/* Add category title */}
+                    <div className = "mb -2">
+                    <h5 className="text-1xl font-bold tracking-tight text-gray-900 dark:text-black" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontSize: '12px', lineHeight: '1.2' }}>{card.categoryTitle}</h5> {/* Add category title */}
                     </div>
-  ))}
-</div>
-
+                    
+                    </div>
+            ))}
+        </div>
         </>
     );
 }
