@@ -1,6 +1,7 @@
 import profileSVG from '/resources/assets/Personal_info.svg'
 import faqSVG from '/resources/assets/FAQ.svg'
 import termSVG from '/resources/assets/Terms.svg'
+import languageSVG from '/resources/assets/Language.svg'
 
 export default function SettingItem(props){
 
@@ -13,7 +14,7 @@ export default function SettingItem(props){
 
         {
             settingName: 'Language Settings',
-            settingImage: profileSVG
+            settingImage: languageSVG
         },
 
         {
