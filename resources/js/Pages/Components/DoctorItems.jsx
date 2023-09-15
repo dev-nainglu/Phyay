@@ -69,22 +69,22 @@ export default function DoctorItems(props) {
                 {card.position}
               </p>
             </div>
-            <div className="flex items-center">
+            <div className="flex flex-row items-center">
               <div className="flex flex-col mr-3">
-                <span className="text-gray-600 dark:text-gray-400" style={{ fontSize: '12px' }}>
+                <span className="text-gray-600 dark:text-gray-400 text-xs md:text-sm">
                   {/* Default name label */}
                   Experience
                 </span>
-                <span className="text-gray-800 dark:text-gray-300 font-medium" style={{ fontSize: '12px', fontWeight: '700' }}>
+                <span className="text-gray-800 dark:text-gray-300 font-medium text-xs md:text-sm md:font-semibold">
                   {card.numberOfExperience}
                 </span>
               </div>
               <div className="flex flex-col">
-                <span className="text-gray-600 dark:text-gray-400" style={{ fontSize: '12px'}}>
+                <span className="text-gray-600 dark:text-gray-400 text-xs md:text-sm">
                   {/* Default label */}
                   Fees
                 </span>
-                <span className="text-gray-800 dark:text-gray-300 font-medium" style={{ fontSize: '12px', fontWeight: '700' }}>
+                <span className="text-gray-800 dark:text-gray-300 font-medium text-xs md:text-sm md:font-semibold">
                   {card.fees}
                 </span>
               </div>
@@ -93,7 +93,7 @@ export default function DoctorItems(props) {
               <a
                 href={"/doctors/" + card.id}
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                style={{ width: '150px', height: '35px', backgroundColor: '#5185FE' }}
+                style={{height: '35px', backgroundColor: '#5185FE' }}
               >
                 Make Appointment
               </a>
