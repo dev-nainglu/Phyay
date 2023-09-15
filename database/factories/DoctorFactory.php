@@ -18,8 +18,8 @@ class DoctorFactory extends Factory
     public function definition(): array
     {
         return [
-            //
-            'name' => $this->faker->name,
+            // add prefix doctor to name
+            'name' => 'Dr. ' . $this->faker->firstName . ' ' . $this->faker->lastName,
             'experience' => $this->faker->numberBetween(1, 10),
             'fee' => $this->faker->numberBetween(3, 10) * 1000,
         ];

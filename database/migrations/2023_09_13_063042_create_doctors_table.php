@@ -14,8 +14,9 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->integer('experience');
-            $table->foreignId('category_id')->constrained();
+            $table->foreignId('category_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->string('fee');
+            $table->string('image')->nullable()->max(1000);
             $table->timestamps();
         });
     }

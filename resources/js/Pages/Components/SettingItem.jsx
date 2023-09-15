@@ -56,7 +56,7 @@ export default function SettingItem(props){
                     </button>
                         </div>
                     </div>
-                    <hr className="mt-5 my-0.5 border-t border-gray-300" style={index === cards.length - 1 ? { display: 'none' } : {}} />
+                    <hr className="mt-1 my-0.5 border-t border-gray-300" style={index === cards.length - 1 ? { display: 'none' } : {}} />
                 </li>
                 </ul>
             ))}

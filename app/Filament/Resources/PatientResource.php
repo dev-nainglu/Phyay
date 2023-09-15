@@ -23,7 +23,7 @@ class PatientResource extends Resource
 {
     protected static ?string $model = Patient::class;
 
-    protected static ?string $navigationIcon = 'healthicons-o-person';
+    protected static ?string $navigationIcon = 'icon-patient';
 
     // hide create button
     public static function canCreate(): bool
