@@ -52,7 +52,7 @@ export default function AppointmentItems(props) {
                         </div>
                         <div className='mt-[30px]'>
                             <a
-                                href="#"
+                                href={"/appointments/" + index}
                                 className="px-3 py-2 text-center text-sm font-medium rounded-lg hover:bg-blue-800 hover:text-white-700"
                                 style={{ color:'#5185FE', border: '2px solid #5185FE', textAlign: 'center' }}
                                 >

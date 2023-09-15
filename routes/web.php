@@ -24,6 +24,10 @@ Route::get('/render', function(){
     return Inertia::render('ContainerLayout');
 });
 
+Route::get('/appointments/{id}', function () {
+    return Inertia::render('AppointmentDetail');
+});
+
 Route::get('/doctors/{id}', function () {
     return Inertia::render('DoctorProfile');
 });
