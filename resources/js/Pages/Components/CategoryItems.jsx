@@ -11,17 +11,17 @@ export default function CategoryItems(props){
 
     const cards = [
         {
-            imgSrc: sexEducation,
+            imgSrc: workStressIcon,
             categoryTitle: 'Sex Edu'
         },
 
         {
-            imgSrc: lgbtqIcon,
+            imgSrc: abuseIcon,
             categoryTitle: 'LGBTQ+'
         },
 
         {
-            imgSrc: youthSupportIcon,
+            imgSrc: ancietyIcon,
             categoryTitle: 'Youth Support'
         },
 
@@ -36,17 +36,17 @@ export default function CategoryItems(props){
         },
 
         {
-            imgSrc: workStressIcon,
+            imgSrc: youthSupportIcon,
             categoryTitle: 'Workplace'
         },
 
         {
-            imgSrc: ancietyIcon,
+            imgSrc: sexEducation,
             categoryTitle: 'Anxiety'
         },
 
         {
-            imgSrc: abuseIcon,
+            imgSrc: lgbtqIcon,
             categoryTitle: 'Abuse'
         }
     ]
@@ -64,8 +64,8 @@ export default function CategoryItems(props){
                         className="rounded-full w-full h-full object-cover"
                         />
                     </div>
-                    <div className = "mb -2">
-                    <h5 className="text-1xl font-bold tracking-tight text-gray-900 dark:text-black" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontSize: '12px', lineHeight: '1.2' }}>{card.categoryTitle}</h5> {/* Add category title */}
+                    <div className = "mb -3" style={{ marginTop: '10px' }}>
+                    <h5 className="mb-3 text-sm font-normal text-gray-700" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontSize: '12px', lineHeight: '1.2' }}>{card.categoryTitle}</h5> {/* Add category title */}
                     </div>
                     </div>
                     </a>

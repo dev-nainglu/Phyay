@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "blade-ui-kit/blade-icons": "^1.5",
         "filament/filament": "^3.0-stable",
         "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "^0.6.10",
@@ -17,6 +18,7 @@
         "spiral/roadrunner-cli": "^2.5.0",
         "spiral/roadrunner-http": "^3.0.1",
         "tightenco/ziggy": "^1.6",
+        "troccoli/blade-health-icons": "^2.0",
         "ysfkaya/filament-phone-input": "^2.0"
     },
     "require-dev": {
