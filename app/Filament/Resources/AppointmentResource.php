@@ -26,7 +26,7 @@ class AppointmentResource extends Resource
 {
     protected static ?string $model = Appointment::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
+    protected static ?string $navigationIcon = 'icon-appointment';
 
     // hide create button
     public static function canCreate(): bool
