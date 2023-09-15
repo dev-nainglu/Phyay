@@ -5,13 +5,7 @@ import Profile from "./Layouts/Profile";
 import { useState } from "react";
 
 export default function AppLayout(){
-    const queryParameters = new URLSearchParams(window.location.search)
 
-    let client_id = queryParameters.get("client_id")
-    let lang = queryParameters.get("language")
-
-    console.log(client_id)
-    console.log(lang)
     const [activeTab, setValue] = useState('home')
     const WaveSDK = new window.WaveJsSDK();
 
@@ -43,7 +37,7 @@ export default function AppLayout(){
         }
     }
 
-    getLocation()
+    //getLocation()
 
     const changeTab = (tab) => {
         setValue(tab)
