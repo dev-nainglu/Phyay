@@ -11,14 +11,13 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        <script type="text/javascript" src="/js/wavemoney.min.js"></script>
+        <script type="text/javascript" src="https://d1juecpbgfpwl3.cloudfront.net/js/wavemoney.min.js"></script>
         <script>
         // Wait for the DOM to be ready
-        // window.flutter_inappwebview = 1;
+        window.flutter_inappwebview = {{ config('app.env') == 'local' }}
         document.addEventListener('DOMContentLoaded', function () {
             try {
             const sdk = new WaveJsSDK();
-            window.sdk = sdk;
             sdk.init({ clientId: 'wave-money' });
             } catch (e) {
             console.log(e);
