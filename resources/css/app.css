@@ -18,7 +18,7 @@
   }
 
   .custom-button {
-    width: 49px;
+    width: 50px;
     height: 80px;
     margin: 6px; /* Add spacing between buttons */
     text-align: center;
@@ -48,6 +48,17 @@
 
 .custom-button:focus {
   border-color: #5185FE;/* Change to the desired focus color */
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin: 16px;
+  width: 100px; /* Adjust the width as needed */
+  text-align: center;
 }
 
 
