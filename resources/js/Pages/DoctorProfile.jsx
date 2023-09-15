@@ -1,9 +1,21 @@
+import { useState } from "react";
 import ContainerLayout from "./ContainerLayout";
 
 export default function DoctorProfile(){
 
-    function genderChange(){
+    const [patientName, setName] = useState('Naing Lu')
+    const [patientAge, setAge] = useState('23')
+    const [gender, setGender] = useState('Male')
+    const [timeslot, setTimeslot] = useState('2 PM - 4 PM')
 
+    const changeTimeslot = () => {
+        let timeslot = document.getElementById("timeslot").value;
+        setTimeslot(timeslot)
+    }
+
+    const bookAppointment = (timeslot) => {
+        setTimeslot(timeslot)
+        console.log(timeslot)
     }
 
     return (
@@ -16,8 +28,8 @@ export default function DoctorProfile(){
                         <img className="object-cover object-center h-32" src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt='Woman looking front' />
                     </div>
                     <div className="text-center mt-2">
-                        <h2 className="font-semibold">Sarah Smith</h2>
-                        <p className="text-gray-500">Freelance Web Designer</p>
+                        <h2 className="font-semibold">Soe Thura</h2>
+                        <p className="text-gray-500">Therapist</p>
                     </div>
                     <ul className="py-4 mt-2 text-gray-700 flex items-center justify-around">
                         <li className="flex flex-col items-center justify-around">
@@ -25,8 +37,8 @@ export default function DoctorProfile(){
                                 <path d="M0 0H49V48C49 56.2843 42.2843 63 34 63H15C6.71573 63 0 56.2843 0 48V0Z" fill="#FDF1F3"/>
                                 <path fillRule="evenodd" clipRule="evenodd" d="M25.0363 48.1777C24.6942 47.9896 24.2806 47.9929 23.9473 48.192L19.8245 50.612L21.4393 44.331C22.4018 44.881 23.5139 45.2 24.6997 45.2C25.8855 45.2 26.9976 44.881 27.9612 44.331L29.5991 50.7022L25.0363 48.1777ZM24.6997 34.2C27.1263 34.2 29.0997 36.1734 29.0997 38.6C29.0997 41.0266 27.1263 43 24.6997 43C22.2731 43 20.2997 41.0266 20.2997 38.6C20.2997 36.1734 22.2731 34.2 24.6997 34.2ZM32.3656 52.6261L29.8257 42.7492C30.7453 41.614 31.2997 40.1719 31.2997 38.6C31.2997 34.9601 28.3396 32 24.6997 32C21.0609 32 18.0997 34.9601 18.0997 38.6C18.0997 40.1719 18.6541 41.614 19.5737 42.7492L17.0349 52.6261C16.9238 53.0573 17.0833 53.5116 17.4386 53.7789C17.7928 54.0462 18.2746 54.0704 18.6563 53.8482L24.5193 50.4063L30.7673 53.8625C30.9334 53.9549 31.1171 54 31.2997 54C31.5384 54 31.776 53.923 31.974 53.7701C32.3205 53.5017 32.4756 53.0518 32.3656 52.6261Z" fill="#E8899E"/>
                             </svg>
-                            <div><b>10 Yrs</b></div>
-                            <div>Experience</div>
+                            <div className="mt-1"><b>10 Yrs</b></div>
+                            <div className="text-xs">Experience</div>
                         </li>
                         <li className="flex flex-col items-center justify-between">
                             <svg width="49" height="63" viewBox="0 0 49 63" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -40,8 +52,8 @@ export default function DoctorProfile(){
                             </clipPath>
                             </defs>
                             </svg>
-                            <div>10k</div>
-                            <div>Experience</div>
+                            <div className="mt-1"><b>4.5</b></div>
+                            <div className="text-xs">Ratings</div>
                         </li>
                         <li className="flex flex-col items-center justify-around">
                             <svg width="49" height="63" viewBox="0 0 49 63" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -55,8 +67,8 @@ export default function DoctorProfile(){
                             </clipPath>
                             </defs>
                             </svg>
-                            <div>10k</div>
-                            <div>Experience</div>
+                            <div className="mt-1"><b>5000</b></div>
+                            <div className="text-xs">MMK</div>
                         </li>
                     </ul>
                 </div>
@@ -64,12 +76,12 @@ export default function DoctorProfile(){
                 <div className="max-w-2xl mx-4 p-3 mt-1 bg-white shadow-xl rounded-lg text-gray-900">
                     <h3><b>About Doctor</b></h3>
                     <p className="text-xs text-blue-900">
-                        Dr. Bellamy Nicholas is a top specialist at London Bridge Hospital at London. He has achieved several awards and recognition for is contribution and service in his own field. He is available for private consultation.
+                        Dr. Soe Thura is a top specialist at London Bridge Hospital at London. He has achieved several awards and recognition for is contribution and service in his own field. He is available for private consultation.
                     </p>
                 </div>
-                <div className="mx-4 mt-6">
-                    <h3><b>Available Date</b></h3>
-                    <div className="grid grid-cols-7 gap-2 text-center">
+                <div className="mt-6">
+                    <h3 className="mx-4"><b>Available Date</b></h3>
+                    <div className="mx-2 grid grid-cols-7 gap-2 text-center">
                         <button className="custom-button">
                             <p className="text-primary"><b>Sun</b></p>
                             <p className="text-secondary">11</p>
@@ -99,44 +111,46 @@ export default function DoctorProfile(){
                             <p className="text-secondary">17</p>
                         </button>
                     </div>
-                    <h3 className="mt-6"><b>Time Slot</b></h3>
-                    <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                        <option>10 AM - 12 AM</option>
-                        <option>2 PM - 4 PM</option>
-                        <option>6 PM - 8 PM</option>
-                        <option>9 PM - 11 PM</option>
-                    </select>
+                    <div className="mx-3">
+                        <h3 className="mt-6"><b>Time Slot</b></h3>
+                        <select id="timeslot" value={timeslot} onChange={() => changeTimeslot()} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                            <option>10 AM - 12 AM</option>
+                            <option>2 PM - 4 PM</option>
+                            <option>6 PM - 8 PM</option>
+                            <option>9 PM - 11 PM</option>
+                        </select>
 
-                    <h2 className="mt-6"><b>Patient Details</b></h2>
-                    <div className="mt-2">
-                        <label htmlFor="email" className="block mb-1 text-sm font-medium text-gray-600">Name</label>
-                        <input type="email" id="email" value="Tolu Arowolesu" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" disabled required />
-                    </div>
-                    <div className="mt-2">
-                        <label htmlFor="email" className="block mb-1 text-sm font-medium text-gray-600">Age</label>
-                        <input type="email" id="email" value="23" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" disabled required />
-                    </div>
-
-                    <fieldset className="mt-3">
-                        <label htmlFor="email" className="block mb-1 text-sm font-medium text-gray-600">Gender</label>
-                        <div className="flex items-center mb-1">
-                            <input id="country-option-1" type="radio" name="countries" value="USA" className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300" defaultChecked />
-                            <label htmlFor="country-option-1" className="block ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                            Male
-                            </label>
+                        <h2 className="mt-6"><b>Patient Details</b></h2>
+                        <div className="mt-2">
+                            <label htmlFor="email" className="block mb-1 text-sm font-medium text-gray-600">Name</label>
+                            <input type="email" id="email" value={patientName} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" disabled required />
+                        </div>
+                        <div className="mt-2">
+                            <label htmlFor="email" className="block mb-1 text-sm font-medium text-gray-600">Age</label>
+                            <input type="email" id="email" value={patientAge} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" disabled required />
                         </div>
 
-                        <div className="flex items-center mb-1">
-                            <input id="country-option-2" type="radio" name="countries" value="Germany" className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300" />
-                            <label htmlFor="country-option-2" className="block ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                            Female
-                            </label>
-                        </div>
-                    </fieldset>
+                        <fieldset className="mt-3">
+                            <label htmlFor="email" className="block mb-1 text-sm font-medium text-gray-600">Gender</label>
+                            <div className="flex items-center mb-1">
+                                <input id="country-option-1" type="radio" defaultChecked={gender == 'Male'} name="gender" value='Male' className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300" />
+                                <label htmlFor="country-option-1" className="block ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                Male
+                                </label>
+                            </div>
 
-                    <label htmlFor="message" className="block mt-4 mb-2 text-sm font-medium text-gray-900">Write your problem</label>
-                    <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Leave a comment..."></textarea>
-                    <button type="submit" className="w-full mb-10 text-white mt-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Book Appointment</button>
+                            <div className="flex items-center mb-1">
+                                <input id="country-option-2" type="radio" defaultChecked={gender == 'Female'} name="gender" value='Female' className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300" />
+                                <label htmlFor="country-option-2" className="block ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                Female
+                                </label>
+                            </div>
+                        </fieldset>
+
+                        <label htmlFor="message" className="block mt-4 mb-2 text-sm font-medium text-gray-900">Write your problem</label>
+                        <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Leave a comment..."></textarea>
+                        <button type="submit" onClick={() => bookAppointment(timeslot)} className="w-full mb-10 text-white mt-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Book Appointment</button>
+                    </div>
                 </div>
 
 
