@@ -3,7 +3,6 @@ import DoctorList from "./Layouts/DoctorList";
 import AppointmentList from "./Layouts/AppointmentList";
 import Profile from "./Layouts/Profile";
 import { useState } from "react";
-import { languages } from "vendor/filp/whoops/src/Whoops/Resources/js/prism";
 
 export default function AppLayout(){
     const queryParameters = new URLSearchParams(window.location.search)
