@@ -14,9 +14,22 @@
         @routes
         @viteReactRefresh
         @vite(['resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx"])
+
         @inertiaHead
     </head>
     <body class="font-sans antialiased">
         @inertia
+        <script type="text/javascript" src="/js/wavemoney.min.js"></script>
+        <script>
+        // Wait for the DOM to be ready
+        document.addEventListener('DOMContentLoaded', function () {
+            try {
+            const sdk = new WaveJsSDK();
+            sdk.init({ clientId: 'wave-money' });
+            } catch (e) {
+            console.log(e);
+            }
+        });
+        </script>
     </body>
 </html>

@@ -7,7 +7,7 @@ export default function Wall(props) {
   return (
     <>
 
-        <form>
+        <form className='mt-[60px]'>
             <label htmlFor="search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
             <div className="relative">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">

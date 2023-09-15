@@ -5,11 +5,13 @@ export default function Wall(props){
 
     return (
         <>
-            <div className="overflow-x-scroll mt-[60px] no-scrollbar">
+            <div className="overflow-x-scroll mt-3 no-scrollbar">
                 {props.show != 'noshow' && <HorizontalCategoryItems />}
             </div>
-            <DoctorItems />
 
+            <div className={props.show == 'noshow' ? 'mt-[50px]' : ''}>
+                <DoctorItems />
+            </div>
         </>
     );
 }
