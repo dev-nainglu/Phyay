@@ -11,6 +11,20 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
+        <script type="text/javascript" src="/js/wavemoney.min.js"></script>
+        <script>
+        // Wait for the DOM to be ready
+        // window.flutter_inappwebview = 1;
+        document.addEventListener('DOMContentLoaded', function () {
+            try {
+            const sdk = new WaveJsSDK();
+            window.sdk = sdk;
+            sdk.init({ clientId: 'wave-money' });
+            } catch (e) {
+            console.log(e);
+            }
+        });
+        </script>
         @routes
         @viteReactRefresh
         @vite(['resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx"])
@@ -19,17 +33,5 @@
     </head>
     <body class="font-sans antialiased">
         @inertia
-        <script type="text/javascript" src="/js/wavemoney.min.js"></script>
-        <script>
-        // Wait for the DOM to be ready
-        document.addEventListener('DOMContentLoaded', function () {
-            try {
-            const sdk = new WaveJsSDK();
-            sdk.init({ clientId: 'wave-money' });
-            } catch (e) {
-            console.log(e);
-            }
-        });
-        </script>
     </body>
 </html>

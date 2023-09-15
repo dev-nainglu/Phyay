@@ -7,7 +7,7 @@ import { useState } from "react";
 export default function AppLayout(){
 
     const [activeTab, setValue] = useState('home')
-    const WaveSDK = new window.WaveJsSDK();
+    const WaveSDK = window.sdk;
 
     const getLocation = () => {
         WaveSDK.locationModule = {
