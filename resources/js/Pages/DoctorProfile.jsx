@@ -1,15 +1,21 @@
 import ContainerLayout from "./ContainerLayout";
+import { useState } from "react";
 
 export default function DoctorProfile(){
 
-    function genderChange(){
+    const [activeBtn, setValue] = useState('male')
 
+    const tapGender = (gender) => {
+        setValue(gender)
+    }
+
+    function genderChange(){
     }
 
     return (
         <>
             <ContainerLayout>
-                <div className="max-w-2xl mx-4 mt-16 bg-white shadow-xl rounded-lg text-gray-900">
+                <div className="max-w-2xl mx- mt-16 bg-white text-gray-900">
                     <div className="rounded-t-lg h-20 overflow-hidden">
                     </div>
                     <div className="mx-auto w-32 h-32 relative -mt-16 border-4 border-white rounded-full overflow-hidden">
@@ -19,16 +25,19 @@ export default function DoctorProfile(){
                         <h2 className="font-semibold">Sarah Smith</h2>
                         <p className="text-gray-500">Freelance Web Designer</p>
                     </div>
-                    <ul className="py-4 mt-2 text-gray-700 flex items-center justify-around">
-                        <li className="flex flex-col items-center justify-around">
-                            <svg width="49" height="63" viewBox="0 0 49 63" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 0H49V48C49 56.2843 42.2843 63 34 63H15C6.71573 63 0 56.2843 0 48V0Z" fill="#FDF1F3"/>
-                                <path fillRule="evenodd" clipRule="evenodd" d="M25.0363 48.1777C24.6942 47.9896 24.2806 47.9929 23.9473 48.192L19.8245 50.612L21.4393 44.331C22.4018 44.881 23.5139 45.2 24.6997 45.2C25.8855 45.2 26.9976 44.881 27.9612 44.331L29.5991 50.7022L25.0363 48.1777ZM24.6997 34.2C27.1263 34.2 29.0997 36.1734 29.0997 38.6C29.0997 41.0266 27.1263 43 24.6997 43C22.2731 43 20.2997 41.0266 20.2997 38.6C20.2997 36.1734 22.2731 34.2 24.6997 34.2ZM32.3656 52.6261L29.8257 42.7492C30.7453 41.614 31.2997 40.1719 31.2997 38.6C31.2997 34.9601 28.3396 32 24.6997 32C21.0609 32 18.0997 34.9601 18.0997 38.6C18.0997 40.1719 18.6541 41.614 19.5737 42.7492L17.0349 52.6261C16.9238 53.0573 17.0833 53.5116 17.4386 53.7789C17.7928 54.0462 18.2746 54.0704 18.6563 53.8482L24.5193 50.4063L30.7673 53.8625C30.9334 53.9549 31.1171 54 31.2997 54C31.5384 54 31.776 53.923 31.974 53.7701C32.3205 53.5017 32.4756 53.0518 32.3656 52.6261Z" fill="#E8899E"/>
-                            </svg>
-                            <div><b>10 Yrs</b></div>
-                            <div>Experience</div>
-                        </li>
-                        <li className="flex flex-col items-center justify-between">
+                    <ul className="py-4 mt-1 text-gray-700 flex items-center justify-around">
+                       <div class="card">
+                            <li className="flex flex-col items-center justify-around" style={{ maxWidth: '100px', maxHeight: '100px' }}>
+                                <svg width="49" height="63" viewBox="0 0 49 63" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 0H49V48C49 56.2843 42.2843 63 34 63H15C6.71573 63 0 56.2843 0 48V0Z" fill="#FDF1F3"/>
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M25.0363 48.1777C24.6942 47.9896 24.2806 47.9929 23.9473 48.192L19.8245 50.612L21.4393 44.331C22.4018 44.881 23.5139 45.2 24.6997 45.2C25.8855 45.2 26.9976 44.881 27.9612 44.331L29.5991 50.7022L25.0363 48.1777ZM24.6997 34.2C27.1263 34.2 29.0997 36.1734 29.0997 38.6C29.0997 41.0266 27.1263 43 24.6997 43C22.2731 43 20.2997 41.0266 20.2997 38.6C20.2997 36.1734 22.2731 34.2 24.6997 34.2ZM32.3656 52.6261L29.8257 42.7492C30.7453 41.614 31.2997 40.1719 31.2997 38.6C31.2997 34.9601 28.3396 32 24.6997 32C21.0609 32 18.0997 34.9601 18.0997 38.6C18.0997 40.1719 18.6541 41.614 19.5737 42.7492L17.0349 52.6261C16.9238 53.0573 17.0833 53.5116 17.4386 53.7789C17.7928 54.0462 18.2746 54.0704 18.6563 53.8482L24.5193 50.4063L30.7673 53.8625C30.9334 53.9549 31.1171 54 31.2997 54C31.5384 54 31.776 53.923 31.974 53.7701C32.3205 53.5017 32.4756 53.0518 32.3656 52.6261Z" fill="#E8899E"/>
+                                </svg>
+                                <div><b>10 Yrs</b></div>
+                                <div>Experience</div>
+                            </li>
+                        </div>
+                        <div class="card">
+                        <li className="flex flex-col items-center justify-around" style={{ maxWidth: '100px', maxHeight: '100px'}}>
                             <svg width="49" height="63" viewBox="0 0 49 63" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0 0H49V48C49 56.2843 42.2843 63 34 63H15C6.71573 63 0 56.2843 0 48V0Z" fill="#D6E3FF"/>
                             <g clipPath="url(#clip0_0_1)">
@@ -40,10 +49,12 @@ export default function DoctorProfile(){
                             </clipPath>
                             </defs>
                             </svg>
-                            <div>10k</div>
-                            <div>Experience</div>
+                            <div><b>4.5</b></div>
+                            <div>Rating</div>
                         </li>
-                        <li className="flex flex-col items-center justify-around">
+                        </div>
+                        <div class="card">
+                        <li className="flex flex-col items-center justify-around" style={{ maxWidth: '100px', height: '100px' }}>
                             <svg width="49" height="63" viewBox="0 0 49 63" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0 0H49V48C49 56.2843 42.2843 63 34 63H15C6.71573 63 0 56.2843 0 48V0Z" fill="#FEF6EC"/>
                             <g clipPath="url(#clip0_31_2564)">
@@ -55,20 +66,23 @@ export default function DoctorProfile(){
                             </clipPath>
                             </defs>
                             </svg>
-                            <div>10k</div>
-                            <div>Experience</div>
+                            <div class = "ml-2 mr-2" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}><b>3 0000 MMK</b></div>
+                            <div>Fees</div>
                         </li>
+                        </div>
                     </ul>
                 </div>
 
-                <div className="max-w-2xl mx-4 p-3 mt-1 bg-white shadow-xl rounded-lg text-gray-900">
+                <div className=" mx-0 mt-6 flex justify-between">
                     <h3><b>About Doctor</b></h3>
-                    <p className="text-xs text-blue-900">
+                    <a className="text-blue-800 text-underline text-sm" style={{fontSize: 14,fontWeight: 400, color: '#5185FE' }} href="#">Reviews</a>
+                    
+                </div>
+                <p className="mt-3 text-xs text-blue-900" style={{fontSize: 14,fontWeight: 400, color: '#3F3E3E' }}>
                         Dr. Bellamy Nicholas is a top specialist at London Bridge Hospital at London. He has achieved several awards and recognition for is contribution and service in his own field. He is available for private consultation.
                     </p>
-                </div>
-                <div className="mx-4 mt-6">
-                    <h3><b>Available Date</b></h3>
+                <div className="mx-0 mt-6">
+                    <h3>Date</h3>
                     <div className="grid grid-cols-7 gap-2 text-center">
                         <button className="custom-button">
                             <p className="text-primary"><b>Sun</b></p>
@@ -100,7 +114,7 @@ export default function DoctorProfile(){
                         </button>
                     </div>
                     <h3 className="mt-6"><b>Time Slot</b></h3>
-                    <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                    <select id="countries" className="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " style={{borderRadius: 14}}>
                         <option>10 AM - 12 AM</option>
                         <option>2 PM - 4 PM</option>
                         <option>6 PM - 8 PM</option>
@@ -109,15 +123,28 @@ export default function DoctorProfile(){
 
                     <h2 className="mt-6"><b>Patient Details</b></h2>
                     <div className="mt-2">
-                        <label htmlFor="email" className="block mb-1 text-sm font-medium text-gray-600">Name</label>
-                        <input type="email" id="email" value="Tolu Arowolesu" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" disabled required />
+                        <label htmlFor="email" className="block mb-1 text-sm font-medium text-gray-600">Full name</label>
+                        <input type="email" id="email" value="Tolu Arowolesu" className="mt-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" style={{borderRadius: 14}} disabled required />
                     </div>
                     <div className="mt-2">
                         <label htmlFor="email" className="block mb-1 text-sm font-medium text-gray-600">Age</label>
-                        <input type="email" id="email" value="23" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" disabled required />
+                        <input type="email" id="email" value="23" className="mt-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" style={{borderRadius: 14}} disabled required />
                     </div>
-
-                    <fieldset className="mt-3">
+                    <div class="flex flex-col">
+                    <h5 className="mt-2 block mb-1 text-sm font-medium text-gray-600">Gender</h5>
+                        <div class=" mt-1 flex flex-row">
+                        <button 
+                        type="button" 
+                        className={"text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"}
+                        onClick={() => tapGender('male')}
+                        style={{backgroundColor: '#5185FE', borderRadius: '14'}}>Male</button>
+                        <button type="button"
+                        onClick={() => tapGender('female')}
+                         class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" style={{backgroundColor: '#5185FE', borderRadius: '14'}}>Female</button>
+                        </div>
+                    </div>
+    
+                    {/* <fieldset className="mt-3">
                         <label htmlFor="email" className="block mb-1 text-sm font-medium text-gray-600">Gender</label>
                         <div className="flex items-center mb-1">
                             <input id="country-option-1" type="radio" name="countries" value="USA" className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300" defaultChecked />
@@ -126,16 +153,18 @@ export default function DoctorProfile(){
                             </label>
                         </div>
 
+                        "text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+
                         <div className="flex items-center mb-1">
                             <input id="country-option-2" type="radio" name="countries" value="Germany" className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300" />
                             <label htmlFor="country-option-2" className="block ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                             Female
                             </label>
                         </div>
-                    </fieldset>
+                    </fieldset> */}
 
                     <label htmlFor="message" className="block mt-4 mb-2 text-sm font-medium text-gray-900">Write your problem</label>
-                    <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Leave a comment..."></textarea>
+                    <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" style={{borderRadius: 14}} placeholder="Write Your Problem"></textarea>
                     <button type="submit" className="w-full mb-10 text-white mt-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Book Appointment</button>
                 </div>
 
