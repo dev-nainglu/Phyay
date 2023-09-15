@@ -77,6 +77,7 @@ class DoctorResource extends Resource
                     ->sortable()
                     ->suffix(' years'),
                 TextColumn::make('fee')
+                    ->label('Fee (per Hour)')
                     ->sortable()
                     ->money('mmk'),
             ])
