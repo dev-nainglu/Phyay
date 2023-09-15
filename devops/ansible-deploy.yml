@@ -1,0 +1,56 @@
+#!/usr/bin/env ansible-playbook
+---
+- hosts: localhost
+  become: yes
+  become_method: sudo
+  become_user: ec2-user
+  gather_facts: true
+  vars:
+    branch: main
+    app_dir: "/var/www/html/phyay"
+    repo: "https://wave:C-EckwxDBC43UpM8gJ4x@git.onenex.dev/luu/hackathon.git"
+  tasks:
+    - name: Git pull
+      git:
+        repo: "{{ repo }}"
+        dest: "{{ app_dir }}"
+        version: "{{ branch }}"
+        force: yes
+        update: yes
+        accept_hostkey: yes
+        ssh_opts: "-o StrictHostKeyChecking=no"
+    - name: Composer install
+      shell:
+          cmd: /usr/local/bin/composer install --no-interaction --prefer-dist --optimize-autoloader
+          chdir: "{{ app_dir }}"
+    - name: Take storage ownership
+      shell:
+          cmd: sudo chown -R ec2-user "{{ app_dir }}/storage/"
+          chdir: "{{ app_dir }}"
+    - name: Clear Optimmize
+      shell: php artisan optimize:clear
+      args:
+        chdir: "{{ app_dir }}"
+    - name: run Migration
+      shell: php artisan migrate --force
+      args:
+        chdir: "{{ app_dir }}"
+    - name: npm install
+      shell:
+          cmd: npm install
+          chdir: "{{ app_dir }}"
+    - name: npm run build
+      shell:
+          cmd: npm run build
+          chdir: "{{ app_dir }}"
+    - name: app optimize
+      shell: php artisan optimize
+      args:
+        chdir: "{{ app_dir }}"
+    - name: Restore storage ownership
+      shell:
+          cmd: sudo chown -R apache "{{ app_dir }}/storage/"
+          chdir: "{{ app_dir }}"
+    - name: Reload supervisor
+      shell: sudo supervisorctl restart all
+      
