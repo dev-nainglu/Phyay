@@ -70,37 +70,35 @@ export default function DoctorProfile(){
                 <div className="mx-4 mt-6">
                     <h3><b>Available Date</b></h3>
                     <div className="grid grid-cols-7 gap-2 text-center">
-                        <button className="p-3 mt-1 text-center border-black-100 bg-white shadow-xl rounded-lg text-gray-900 cursor-pointer hover:bg-gray-100 focus:bg-red-500">
-                            <p className="text-red-400"><b>Sun</b></p>
-                            <p>11</p>
+                        <button className="custom-button">
+                            <p className="text-primary"><b>Sun</b></p>
+                            <p className="text-secondary">11</p>
                         </button>
-                        <button className="p-3 mt-1 text-center border-black-100 bg-white shadow-xl rounded-lg text-gray-900 cursor-pointer hover:bg-gray-100 focus:bg-blue-300">
-                        <p className="text-blue-800"><b>Mon</b></p>
-                            <p>12</p>
+                        <button className="custom-button">
+                            <p className="text-primary"><b>Mon</b></p>
+                            <p className="text-secondary">12</p>
                         </button>
-                        <button className="p-3 mt-1 text-center border-black-100 bg-white shadow-xl rounded-lg text-gray-900 cursor-pointer hover:bg-gray-100 focus:bg-blue-300">
-                        <p className="text-blue-800"><b>Tue</b></p>
-                            <p>13</p>
+                        <button className="custom-button">
+                            <p className="text-primary"><b>Tue</b></p>
+                            <p className="text-secondary">13</p>
                         </button>
-                        <button className="p-3 mt-1 text-center border-black-100 bg-white shadow-xl rounded-lg text-gray-900 cursor-pointer hover:bg-gray-100 focus:bg-blue-300">
-                        <p className="text-blue-800"><b>Wed</b></p>
-                            <p>14</p>
+                        <button className="custom-button">
+                            <p className="text-primary"><b>Wed</b></p>
+                            <p className="text-secondary">14</p>
                         </button>
-
-                        <button className="p-3 mt-1 text-center border-black-100 bg-white shadow-xl rounded-lg text-gray-900 cursor-pointer hover:bg-gray-100 focus:bg-blue-300">
-                        <p className="text-blue-800"><b>Thu</b></p>
-                            <p>15</p>
+                        <button className="custom-button">
+                            <p className="text-primary"><b>Thu</b></p>
+                            <p className="text-secondary">15</p>
                         </button>
-                        <button className="p-3 mt-1 text-center border-black-100 bg-white shadow-xl rounded-lg text-gray-900 cursor-pointer hover:bg-gray-100 focus:bg-blue-300">
-                            <p className="text-blue-800"><b>Fri</b></p>
-                            <p>16</p>
+                        <button className="custom-button">
+                            <p className="text-primary"><b>Fri</b></p>
+                            <p className="text-secondary">16</p>
                         </button>
-                        <button className="p-3 mt-1 text-center border-black-100 bg-white shadow-xl rounded-lg text-gray-900 cursor-pointer hover:bg-gray-100 focus:bg-red-500">
-                            <p className="text-red-400"><b>Sat</b></p>
-                            <p>17</p>
+                        <button className="custom-button">
+                            <p className="text-primary"><b>Sat</b></p>
+                            <p className="text-secondary">17</p>
                         </button>
                     </div>
-
                     <h3 className="mt-6"><b>Time Slot</b></h3>
                     <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         <option>10 AM - 12 AM</option>

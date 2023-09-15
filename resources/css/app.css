@@ -16,3 +16,41 @@
       }
     }
   }
+
+  .custom-button {
+    width: 49px;
+    height: 80px;
+    margin: 6px; /* Add spacing between buttons */
+    text-align: center;
+    border: 1px solid #ccc; /* Dimmed border color (#999) */
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);  /* Lighter box shadow */
+    border-radius: 14px;
+    color: #000;
+    cursor: pointer;
+}
+
+.custom-button .text-primary {
+  color: #3F3E3E; /* Initial color for the first text */
+}
+
+.custom-button .text-secondary {
+  color: #484C52; /* Initial color for the second text */
+}
+
+.custom-button:focus .text-primary {
+  color: #5185FE; /* Change color of the first text on button click */
+}
+
+.custom-button:focus .text-secondary {
+  color: #5185FE; /* Change color of the second text on button click */
+}
+
+.custom-button:focus {
+  border-color: #5185FE;/* Change to the desired focus color */
+}
+
+
+
+
+
