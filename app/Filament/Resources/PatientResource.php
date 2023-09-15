@@ -7,6 +7,7 @@ use App\Filament\Resources\PatientResource\RelationManagers;
 use App\Models\Patient;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -39,16 +40,22 @@ class PatientResource extends Resource
                 TextInput::make('name')
                     ->maxLength(255)
                     ->required(),
-                PhoneInput::make('phone_number')
-                    ->onlyCountries(['MM'])
-                    ->label('Phone Number')
-                    ->required(),
+                TextInput::make('phone_number')
+                    ->maxLength(255)
+                    ->required()
+                    ->placeholder('09xxxxxxxxx'),
                 DatePicker::make('date_of_birth')
                     ->placeholder('YYYY-MM-DD')
                     ->label('Date of Birth')
                     ->maxDate(now())
                     ->native(false)
                     ->required(),
+                Select::make('gender')
+                    ->options(
+                        ['Male' => 'Male', 'Female' => 'Female', 'Other' => 'Other']
+                    )
+                    ->required()
+                    ->native(false),
             ]);
     }
 
@@ -62,6 +69,9 @@ class PatientResource extends Resource
                     ->sortable(),
                 PhoneInputColumn::make('phone_number'),
                 TextColumn::make('date_of_birth')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('gender')
                     ->searchable()
                     ->sortable(),
             ])

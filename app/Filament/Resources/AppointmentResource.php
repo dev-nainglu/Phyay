@@ -31,7 +31,7 @@ class AppointmentResource extends Resource
     // hide create button
     public static function canCreate(): bool
     {
-        return false;
+        return true;
     }
 
     public static function form(Form $form): Form
