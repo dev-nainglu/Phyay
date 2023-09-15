@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('name')->unique()->required();
             $table->string("description")->nullable();
+            $table->string("icon")->nullable()->max(1000);
             $table->timestamps();
         });
     }
