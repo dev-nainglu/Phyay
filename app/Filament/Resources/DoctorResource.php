@@ -6,15 +6,19 @@ use App\Filament\Resources\DoctorResource\Pages;
 use App\Filament\Resources\DoctorResource\RelationManagers;
 use App\Models\Doctor;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class DoctorResource extends Resource
 {
@@ -58,6 +62,20 @@ class DoctorResource extends Resource
                     ->required()
                     ->placeholder(__('Fee per Hour'))
                     ->prefix('MMK'),
+                FileUpload::make('image')
+                    ->disk('s3')
+                    ->directory('doctors')
+                    ->image()
+                    ->imageResizeMode('cover')
+                    ->imageCropAspectRatio('1:1')
+                    ->imageResizeTargetWidth('600')
+                    ->imageResizeTargetHeight('600')
+                    ->getUploadedFileNameForStorageUsing(
+                        function (TemporaryUploadedFile $file): string {
+                            // uuid
+                            return Str::uuid()->toString() . '.' . $file->getClientOriginalExtension();
+                        }
+                    )
 
             ]);
     }
@@ -80,6 +98,9 @@ class DoctorResource extends Resource
                     ->label('Fee (per Hour)')
                     ->sortable()
                     ->money('mmk'),
+                ImageColumn::make('image')
+                    ->disk('s3')
+                    ->circular()
             ])
             ->filters([
                 //

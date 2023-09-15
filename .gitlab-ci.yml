@@ -1,0 +1,29 @@
+image: alpine:latest
+
+services:
+  - docker:dind
+
+stages:
+  - deploy
+
+before_script:
+  - 'which ssh-agent || ( apk add openssh git -q )'
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -> /dev/null
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - touch ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
+
+Deploy to Production:
+  stage: deploy
+  when: manual
+  script:
+    - ssh-keyscan $PROD_SERVER >> ~/.ssh/known_hosts
+    - ssh ec2-user@${PROD_SERVER} -t "ansible-playbook ~/devops/deploy-laravel.yml -e \"version=$(date +'%Y%m%d%H%M%S')\""
+  only:
+    - main
+    - master
+  tags:
+    - yoma-group
+

@@ -6,15 +6,19 @@ use App\Filament\Resources\CategoryResource\Pages;
 use App\Filament\Resources\CategoryResource\RelationManagers;
 use App\Models\Category;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
+use Illuminate\Support\Str;
 
 class CategoryResource extends Resource
 {
@@ -28,7 +32,17 @@ class CategoryResource extends Resource
             ->schema([
                 TextInput::make('name')
                     ->required(),
-                Textarea::make('description')
+                Textarea::make('description'),
+                FileUpload::make('icon')
+                    ->disk('s3')
+                    ->directory('categories')
+                    ->image()
+                    ->getUploadedFileNameForStorageUsing(
+                        function (TemporaryUploadedFile $file): string {
+                            // uuid
+                            return Str::uuid()->toString() . '.' . $file->getClientOriginalExtension();
+                        }
+                    )
 
             ]);
     }
@@ -42,6 +56,8 @@ class CategoryResource extends Resource
                 TextColumn::make('description')
                     ->limit(50)
                     ->wrap(),
+                ImageColumn::make('icon')
+                    ->disk('s3'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
