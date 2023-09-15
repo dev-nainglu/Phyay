@@ -2,6 +2,7 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
+    "homepage": "http://13.215.171.0/",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
