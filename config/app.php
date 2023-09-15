@@ -185,6 +185,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Jubaer\Zoom\ZoomServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -211,6 +212,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Zoom' => Jubaer\Zoom\Facades\Zoom::class,
     ])->toArray(),
 
 ];

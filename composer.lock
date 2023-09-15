@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b4aee0d15d7aa8a88c56637bdc5e6cd1",
+    "content-hash": "4c82e832c7b07f094a21548a517bfdb7",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -2419,6 +2419,65 @@
                 }
             ],
             "time": "2023-09-13T02:24:55+00:00"
+        },
+        {
+            "name": "jubaer/zoom-laravel",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JubaerHossain/zoom-laravel.git",
+                "reference": "bfb73fad39e04a275c29c81856134c79ee470ea1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JubaerHossain/zoom-laravel/zipball/bfb73fad39e04a275c29c81856134c79ee470ea1",
+                "reference": "bfb73fad39e04a275c29c81856134c79ee470ea1",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.6",
+                "php": "^7.2|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Jubaer\\Zoom\\ZoomServiceProvider"
+                    ],
+                    "aliases": {
+                        "Zoom": "Jubaer\\Zoom\\Facades\\Zoom"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jubaer\\Zoom\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "jubaer hossain",
+                    "email": "jubaer01.cse@gmail.com"
+                }
+            ],
+            "description": "It's a zoom integration package using php",
+            "homepage": "https://github.com/JubaerHossain/zoom-laravel",
+            "keywords": [
+                "api",
+                "client",
+                "laravel",
+                "laravel-zoom",
+                "zoom"
+            ],
+            "support": {
+                "issues": "https://github.com/JubaerHossain/zoom-laravel/issues",
+                "source": "https://github.com/JubaerHossain/zoom-laravel/tree/1.2.0"
+            },
+            "time": "2023-06-08T17:25:15+00:00"
         },
         {
             "name": "kirschbaum-development/eloquent-power-joins",
@@ -11787,5 +11846,5 @@
         "php": "^8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }

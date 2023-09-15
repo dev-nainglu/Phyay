@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ZoomController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -23,6 +24,8 @@ Route::get('/', function () {
 Route::get('/render', function(){
     return Inertia::render('ContainerLayout');
 });
+
+Route::get('/zoom', [ZoomController::class, 'create'])->name('zoom.create');
 
 Route::get('/doctors/{id}', function () {
     return Inertia::render('DoctorProfile');
