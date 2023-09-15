@@ -69,26 +69,27 @@ export default function DoctorItems(props) {
                 {card.position}
               </p>
             </div>
-            <div className="flex flex-row items-center">
-              <div className="flex flex-col mr-3">
-                <span className="text-gray-600 dark:text-gray-400 text-xs md:text-sm">
-                  {/* Default name label */}
-                  Experience
-                </span>
-                <span className="text-gray-800 dark:text-gray-300 font-medium text-xs md:text-sm md:font-semibold">
-                  {card.numberOfExperience}
-                </span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-gray-600 dark:text-gray-400 text-xs md:text-sm">
-                  {/* Default label */}
-                  Fees
-                </span>
-                <span className="text-gray-800 dark:text-gray-300 font-medium text-xs md:text-sm md:font-semibold">
-                  {card.fees}
-                </span>
-              </div>
-            </div>
+            <div className="flex items-center">
+  <div className="flex flex-col mr-3">
+    <span className="text-gray-600 dark:text-gray-400" style={{ fontSize: '12px' }}>
+      {/* Default name label */}
+      Experience
+    </span>
+    <span className="text-gray-800 dark:text-gray-300 font-medium" style={{ fontSize: '12px', fontWeight: '700' }}>
+      {card.numberOfExperience}
+    </span>
+  </div>
+  <div className="flex flex-col">
+    <span className="text-gray-600 dark:text-gray-400" style={{ fontSize: '12px' }}>
+      {/* Default label */}
+      Fees
+    </span>
+    <span style={{ whiteSpace: 'nowrap' }} className="text-gray-800 dark:text-gray-300 font-medium text-xs md:text-sm md:font-semibold">
+      {card.fees}
+    </span>
+  </div>
+</div>
+
             <div className="mt-3">
               <a
                 href={"/doctors/" + card.id}
