@@ -134,14 +134,14 @@ export default function DoctorProfile(){
                             <label htmlFor="email" className="block mb-1 text-sm font-medium text-gray-600">Gender</label>
                             <div className="flex items-center mb-1">
                                 <input id="country-option-1" type="radio" defaultChecked={gender == 'Male'} name="gender" value='Male' className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300" />
-                                <label htmlFor="country-option-1" className="block ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                <label htmlFor="country-option-1" className="block ml-2 text-sm font-medium text-gray-700">
                                 Male
                                 </label>
                             </div>
 
                             <div className="flex items-center mb-1">
                                 <input id="country-option-2" type="radio" defaultChecked={gender == 'Female'} name="gender" value='Female' className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300" />
-                                <label htmlFor="country-option-2" className="block ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                <label htmlFor="country-option-2" className="block ml-2 text-sm font-medium text-gray-700">
                                 Female
                                 </label>
                             </div>
