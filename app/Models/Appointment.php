@@ -10,6 +10,8 @@ class Appointment extends Model
 {
     use HasFactory;
 
+    protected $appends = ['doctor_name'];
+
     // belongsTo relationship with Doctor and Patient
     public function doctor(): BelongsTo
     {
@@ -19,5 +21,10 @@ class Appointment extends Model
     public function patient(): BelongsTo
     {
         return $this->belongsTo(Patient::class);
+    }
+
+    public function getDoctorNameAttribute()
+    {
+        return $this->doctor->name;
     }
 }

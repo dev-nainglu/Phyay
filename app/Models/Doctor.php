@@ -10,9 +10,23 @@ class Doctor extends Model
 {
     use HasFactory;
 
+    protected $appends = ['image_url', 'category_name'];
+
     // hasOne relationship with category
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function getCategoryNameAttribute()
+    {
+        return $this->category->name;
+    }
+
+    public function getImageUrlAttribute()
+    {
+        return config('filesystems.disks.s3.url') . '/' . $this->image;
+    }
+
+
 }

@@ -17,7 +17,8 @@ return new class extends Migration {
             $table->dateTime('appointment_start_date');
             $table->integer('duration');
             $table->integer('price');
-            $table->enum('status', ['upcoming', 'completed', 'cancelled'])->default('upcoming');
+            $table->enum('status', ['pending', 'upcoming', 'completed', 'cancelled']);
+            $table->string('zoom_meeting_link')->nullable();
             $table->timestamps();
         });
     }
