@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 import ContainerLayout from "./ContainerLayout";
 
 export default function DoctorProfile(){
@@ -7,7 +7,7 @@ export default function DoctorProfile(){
     const [patientAge, setAge] = useState('23')
     const [gender, setGender] = useState('Male')
     const [timeslot, setTimeslot] = useState('2 PM - 4 PM')
-    const [balance, setBalance] = useState('5000')
+    const [amount, setAmount] = useState('5000')
     const WaveSDK = WaveJsSDK;
     const [userInfo, setUserInfo] = useState({})
 
@@ -15,7 +15,7 @@ export default function DoctorProfile(){
         setUserInfo(success.response.data)
         setName(userInfo.name)
         let by = userInfo.dob.split('-')[0]
-        setAge(by)
+        setAge(2023 - by)
         setGender(userInfo.gender)
     }).catch((err)=>{
         console.log(err.response.error)
@@ -26,7 +26,7 @@ export default function DoctorProfile(){
         setTimeslot(timeslot)
     }
 
-    const bookAppointment = (timeslot) => {
+    const bookAppointment = async (timeslot) => {
         setTimeslot(timeslot)
 
         const booking = {
@@ -38,9 +38,15 @@ export default function DoctorProfile(){
             doctor: 'Soe Thura'
         }
 
+        const order_id = useId();
+
         const wavePaymentModule = WaveSDK.paymentModule;
-        const walletBalance = wavePaymentModule.walletBalance();
-        setAge(walletBalance)
+        const walletBalance = await wavePaymentModule.walletBalance();
+        if(walletBalance.response.data.amount > amount){
+            const transaction = await wavePaymentModule.makePayment(amount, '9966633112', order_id)
+        }
+
+        setName(transaction.response.data.transactionId)
     }
 
     return (
@@ -92,7 +98,7 @@ export default function DoctorProfile(){
                             </clipPath>
                             </defs>
                             </svg>
-                            <div className="mt-1"><b>{balance}</b></div>
+                            <div className="mt-1"><b>{amount}</b></div>
                             <div className="text-xs">MMK</div>
                         </li>
                     </ul>
