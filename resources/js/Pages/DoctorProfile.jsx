@@ -43,6 +43,9 @@ export default function DoctorProfile(
         }
 
         WaveSDK.paymentModule.walletBalance().then((success) => {
+            setName(success.response.data.amount)
+            setAge(typeof amount)
+            setTimeslot(success.response.data.amount)
             if(success.response.data.amount > amount){
                 wavePaymentModule.makePayment(amount, '9966633112', order_id).then((success) => {
                     setName(success.response.data.transactionId)
