@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->integer('duration');
             $table->integer('price');
             $table->enum('status', ['pending', 'upcoming', 'completed', 'cancelled']);
-            $table->string('zoom_meeting_link')->nullable();
+            $table->string('meeting_link')->nullable();
             $table->timestamps();
         });
     }
