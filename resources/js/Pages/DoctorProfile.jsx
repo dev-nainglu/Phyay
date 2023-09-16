@@ -14,7 +14,8 @@ export default function DoctorProfile(){
     WaveSDK.userModule.getUserInformation().then((success) => {
         setUserInfo(success.response.data)
         setName(userInfo.name)
-        setAge(userInfo.dob)
+        let by = userInfo.dob.split('-')[0]
+        setAge(by)
         setGender(userInfo.gender)
     }).catch((err)=>{
         console.log(err.response.error)
@@ -33,13 +34,13 @@ export default function DoctorProfile(){
             age: patientAge,
             gender: gender,
             timeslot: timeslot,
-            date: date,
+            date: 'Sun 17',
             doctor: 'Soe Thura'
         }
 
-        let wavePaymentModule = WaveSDK.paymentModule;
-        let balance = wavePaymentModule.walletBalance();
-        setBalance(balance)
+        const wavePaymentModule = WaveSDK.paymentModule;
+        const walletBalance = wavePaymentModule.walletBalance();
+        setAge(walletBalance)
     }
 
     return (
@@ -108,31 +109,31 @@ export default function DoctorProfile(){
                     <div className="mx-2 grid grid-cols-7 gap-2 text-center">
                         <button className="custom-button">
                             <p className="text-primary"><b>Sun</b></p>
-                            <p className="text-secondary">11</p>
+                            <p className="text-secondary">17</p>
                         </button>
                         <button className="custom-button">
                             <p className="text-primary"><b>Mon</b></p>
-                            <p className="text-secondary">12</p>
+                            <p className="text-secondary">18</p>
                         </button>
                         <button className="custom-button">
                             <p className="text-primary"><b>Tue</b></p>
-                            <p className="text-secondary">13</p>
+                            <p className="text-secondary">19</p>
                         </button>
                         <button className="custom-button">
                             <p className="text-primary"><b>Wed</b></p>
-                            <p className="text-secondary">14</p>
+                            <p className="text-secondary">20</p>
                         </button>
                         <button className="custom-button">
                             <p className="text-primary"><b>Thu</b></p>
-                            <p className="text-secondary">15</p>
+                            <p className="text-secondary">21</p>
                         </button>
                         <button className="custom-button">
                             <p className="text-primary"><b>Fri</b></p>
-                            <p className="text-secondary">16</p>
+                            <p className="text-secondary">22</p>
                         </button>
                         <button className="custom-button">
-                            <p className="text-primary"><b>Sat</b></p>
-                            <p className="text-secondary">17</p>
+                            <p className="text-primary"><b>Sun</b></p>
+                            <p className="text-secondary">23</p>
                         </button>
                     </div>
                     <div className="mx-3">
