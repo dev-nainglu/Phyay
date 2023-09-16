@@ -84,8 +84,8 @@ export default function DoctorItems(props) {
       {/* Default label */}
       Fees
     </span>
-    <span style={{ whiteSpace: 'nowrap' }} className="text-gray-800 dark:text-gray-300 font-medium text-xs md:text-sm md:font-semibold">
-      {card.fees}
+    <span style={{ whiteSpace: 'nowrap' }} className="text-gray-800 dark:text-gray-300 font-medium text-xs md:text-sm md:font-medium">
+      <b>{card.fees}</b>
     </span>
   </div>
 </div>

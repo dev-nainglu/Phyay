@@ -1,4 +1,4 @@
-import AppointmentDetailItem from '../Pages/Components/AppointmentDetailItem';
+import AppointmentDetailItem from './Components/AppointmentDetailItem';
 import ContainerLayout from './ContainerLayout';
 import AppoinmentStatusCard from '../Pages/Components/AppoinmentStatusCard';
 
