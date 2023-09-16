@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         echo "Adding admin...\n";
         \App\Models\User::factory()->create([
             'name' => 'Super Admin',
-            'email' => 'superadmin@onenex.co.com',
+            'email' => 'superadmin@onenex.co',
             'password' => bcrypt('Sup3rP@ssw0rd'),
         ]);
         // add categories
