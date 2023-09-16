@@ -1,6 +1,9 @@
 import React from 'react';
+import {useState} from 'react';
 
 export default function AppointmentItems(props) {
+
+  const [filter, setFilter] = useState('all');
 
   const getDate = (datetime)=> {
     return datetime.split(" ")[0]
@@ -9,12 +12,47 @@ export default function AppointmentItems(props) {
     return datetime.split(" ")[1]
   }
 
-  const appointments =props.appointments;
+  const appointments = props.appointments;
+
+  const capitalize = s => (s && s[0].toUpperCase() + s.slice(1)) || "";
+
+  const cards = [
+    'all',
+    'upcoming',
+    'completed',
+    'cancelled'
+  ]
+
+  const filterAppointments = (val) => {
+    filter = val
+    console.log(val)
+  }
+
+  const shouldHidden = (status) => {
+    return filter == 'all' || filter == status ? '' : 'hidden';
+  }
+
   return (
     <>
+            
+            <div className="overflow-x-scroll pt-3 no-scrollbar">
+                {props.show != 'noshow' && 
+                    <div className="flex flex-row" key="">
+                        {cards.map((card, index) => (
+
+                            <a key={index} href="#" onClick={() => setFilter(card)} type="button" className="w-md text-blue-700 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-sm rounded-lg py-2 text-sm px-5 mr-2 mb-2"
+                            style={{ backgroundColor: '#EBF1FF', color: 'black', borderColor: '#8EB0FF'}}
+                            >
+                                {capitalize(card)}
+                            </a>
+                        ))}
+                    </div>
+                }
+            </div>
+            <div className="pt-3"></div>
             <div className="grid grid-row-1 gap-2" key="">
             {appointments.map((card, index) => (
-                 <a href={`/appointments/${card.id}`} key={index} className="bg-white h-50 border border-gray-200 rounded-lg shadow hover:bg-gray-100">
+                 <a href={`/appointments/${card.id}`} key={index} className={`${shouldHidden(card.status)} bg-white h-50 border border-gray-200 rounded-lg shadow hover:bg-gray-100`}>
                     <div className="flex flex-row items-center">
                     <img src={card.doctor.image_url} alt="Your Image" className="pl-2 w-1/2 h-15" style={{borderRadius: 14, height: 100, width: 100}} />
                     <div className="justify-between p-4 leading-normal">
@@ -23,7 +61,7 @@ export default function AppointmentItems(props) {
                     <h5 className="text-md font-bold tracking-tight text-gray-900" style={{ whiteSpace: 'nowrap' }}>{card.doctor.name}</h5>
                     {/* Rounded Chip View */}
                     <div className="bg-yellow-200 px-2 py-1 rounded-full ml-2 text-xs text-yellow-800">
-                        Upcoming
+                    {capitalize(card.status)}
                     </div>
                 </div>
                         {/* <p className="text-sm tracking-tight text-gray-400">Sleeping Disorder</p> */}
