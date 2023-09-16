@@ -94,7 +94,7 @@ export default function DoctorItems(props) {
             <a
                 href={"/doctors/" + card.id}
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                style={{ width: '120px', height: '25px', backgroundColor: '#5185FE', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                style={{ width: '120px', height: '35px', backgroundColor: '#5185FE', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
               >
                 Book
               </a>

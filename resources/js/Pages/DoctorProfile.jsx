@@ -121,15 +121,15 @@ export default function DoctorProfile(
                     </ul>
                 </div>
 
-                <div className="max-w-2xl mx-2 p-3 mt-1 bg-white shadow-xl rounded-lg text-gray-900">
+                <div className="max-w-2xl mx-1 p-3 mt-1 text-gray-900">
                     <h3><b>About Doctor</b></h3>
-                    <p className="text-xs text-blue-900">
+                    <p className="mt-3 text-xs text-gray-900" style={{fontSize: '14px', fontWeight: '400' }}>
                         {doctor.name} is a top specialist at London Bridge Hospital at London. He has achieved several awards and recognition for is contribution and service in his own field. He is available for private consultation.
                     </p>
                 </div>
-                <div className="mt-6">
+                <div className="mt-3">
                     <h3 className="mx-4"><b>Available Date</b></h3>
-                    <div className="ml-1 mr-4 grid grid-cols-7 gap-2 text-center">
+                    <div className="ml-1 mr-3 grid grid-cols-5 gap-2 text-center">
                         <button className="custom-button">
                             <p className="text-primary"><b>Sun</b></p>
                             <p className="text-secondary">17</p>
@@ -150,14 +150,14 @@ export default function DoctorProfile(
                             <p className="text-primary"><b>Thu</b></p>
                             <p className="text-secondary">21</p>
                         </button>
-                        <button className="custom-button">
+                        {/* <button className="custom-button">
                             <p className="text-primary"><b>Fri</b></p>
                             <p className="text-secondary">22</p>
                         </button>
                         <button className="custom-button">
                             <p className="text-primary"><b>Sun</b></p>
                             <p className="text-secondary">23</p>
-                        </button>
+                        </button> */}
                     </div>
                     <div className="mx-3">
                         <h3 className="mt-6"><b>Time Slot</b></h3>
@@ -197,7 +197,15 @@ export default function DoctorProfile(
 
                         <label htmlFor="message" className="block mt-4 mb-2 text-sm font-medium text-gray-900">Write your problem</label>
                         <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Leave a comment..."></textarea>
-                        <button type="submit" onClick={() => bookAppointment(timeslot)} className="w-full mb-10 text-white mt-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Book Appointment</button>
+                        {/* <button type="submit" onClick={() => bookAppointment(timeslot)} className="w-full mb-10 text-white mt-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Book Appointment</button> */}
+                        <a
+                        href={"/appointmentMake/" + 2}
+                        // onClick={() => bookAppointment(timeslot)}
+                        >
+                       <div className="w-full mb-10 text-white mt-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                       Book Appointment
+                       </div>
+                    </a>
                     </div>
                 </div></div>
                 }
