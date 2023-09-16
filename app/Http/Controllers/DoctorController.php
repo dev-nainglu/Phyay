@@ -14,13 +14,10 @@ class DoctorController extends Controller
      * Show the profile for the given doctor.
      */
 
-     public function show(string $id): Response{
+    public function show(string $id): Response
+    {
         // query the doctor by id, exclude timestamps
-        $doctor = Doctor::find($id, ['id', 'name', 'experience', 'fee', 'image', 'category_id']);
-        // query category by id, only get the name
-        $category = Category::find($doctor->category_id, ['name']);
-        // replace category_id with category name in doctor
-        $doctor = $doctor->setAttribute('category', $category->name);
+        $doctor = Doctor::with('category')->get();
         return Inertia::render('DoctorProfile', [
             'doctor' => $doctor,
         ]);
@@ -30,7 +27,8 @@ class DoctorController extends Controller
      * Return the list of doctors for the given category.
      */
 
-    public function index(string $id): Response{
+    public function index(string $id): Response
+    {
         // query the doctors by category id, exclude timestamps
         $doctors = Doctor::where('category_id', $id)->get(['id', 'name', 'experience', 'fee', 'image', 'category_id']);
         // query category by id, only get the name
