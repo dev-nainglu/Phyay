@@ -90,13 +90,13 @@ export default function DoctorItems(props) {
   </div>
 </div>
 
-            <div className="mt-3">
-              <a
+            <div className="pt-5">
+            <a
                 href={"/doctors/" + card.id}
-                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                style={{height: '35px', backgroundColor: '#5185FE' }}
+                className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                style={{ width: '120px', height: '25px', backgroundColor: '#5185FE', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
               >
-                Make Appointment
+                Book
               </a>
             </div>
           </div>

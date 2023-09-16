@@ -1,7 +1,7 @@
 import AppointmentDetailItem from './Components/AppointmentDetailItem';
 import ContainerLayout from './ContainerLayout';
 import AppointmentItems from './Components/AppointmentItems';
-import AppoinmentStatusCard from '../Pages/Components/AppoinmentStatusCard';
+import AppoinmentStatusCard from './Components/AppoinmentStatusCard';
 
 export default function AppointmentDetail(props){
 
@@ -9,7 +9,7 @@ export default function AppointmentDetail(props){
         <>
         <ContainerLayout>
             <div className="pt-10"></div>
-            <AppointmentItems />
+            <AppoinmentStatusCard />
           <AppointmentDetailItem />
         </ContainerLayout>
         </>
