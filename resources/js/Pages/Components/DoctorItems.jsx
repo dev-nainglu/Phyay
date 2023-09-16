@@ -70,32 +70,33 @@ export default function DoctorItems(props) {
               </p>
             </div>
             <div className="flex items-center">
-              <div className="flex flex-col mr-3">
-                <span className="text-gray-600 dark:text-gray-400" style={{ fontSize: '12px' }}>
-                  {/* Default name label */}
-                  Experience
-                </span>
-                <span className="text-gray-800 dark:text-gray-300 font-medium" style={{ fontSize: '12px', fontWeight: '700' }}>
-                  {card.numberOfExperience}
-                </span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-gray-600 dark:text-gray-400" style={{ fontSize: '12px'}}>
-                  {/* Default label */}
-                  Fees
-                </span>
-                <span className="text-gray-800 dark:text-gray-300 font-medium" style={{ fontSize: '12px', fontWeight: '700' }}>
-                  {card.fees}
-                </span>
-              </div>
-            </div>
-            <div className="mt-3">
-              <a
+  <div className="flex flex-col mr-3">
+    <span className="text-gray-600 dark:text-gray-400" style={{ fontSize: '12px' }}>
+      {/* Default name label */}
+      Experience
+    </span>
+    <span className="text-gray-800 dark:text-gray-300 font-medium" style={{ fontSize: '12px', fontWeight: '700' }}>
+      {card.numberOfExperience}
+    </span>
+  </div>
+  <div className="flex flex-col">
+    <span className="text-gray-600 dark:text-gray-400" style={{ fontSize: '12px' }}>
+      {/* Default label */}
+      Fees
+    </span>
+    <span style={{ whiteSpace: 'nowrap' }} className="text-gray-800 dark:text-gray-300 font-medium text-xs md:text-sm md:font-medium">
+      <b>{card.fees}</b>
+    </span>
+  </div>
+</div>
+
+            <div className="pt-5">
+            <a
                 href={"/doctors/" + card.id}
-                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                style={{ width: '150px', height: '35px', backgroundColor: '#5185FE' }}
+                className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                style={{ width: '120px', height: '25px', backgroundColor: '#5185FE', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
               >
-                Make Appointment
+                Book
               </a>
             </div>
           </div>

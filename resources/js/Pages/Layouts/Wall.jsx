@@ -18,7 +18,7 @@ export default function Wall(props) {
                 <input type="search" id="search" className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="How are you feeling today?" required />
             </div>
         </form>
-
+        <div className="pt-1"></div>
         <div className="mt-3 flex flex-row items-center bg-white h-30 border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100">
             <div className="flex-col justify-between p-4 leading-normal">
                 <h5 className="mb-2 text-md font-bold tracking-tight text-gray-900">Consult With Top Specialists</h5>
@@ -32,25 +32,29 @@ export default function Wall(props) {
             <img className="object-cover w-full rounded-t-lg h-20 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src={consultIcon} alt="" />
         </div>
 
-        <div className="mt-5 " style={{ marginBottom: '20px', fontSize: '18px', fontWeight: '600' }}>
+        <div className="pt-6" style={{ marginBottom: '20px', fontSize: '18px', fontWeight: '600' }}>
           <h2>Doctor Specialities</h2>
+          <div className="pt-3"></div>
           <CategoryItems />
         </div>
 
-        <div className="mt-6 flex justify-between">
+        <div className="pt-3 flex justify-between">
           <h2 style={{fontSize: '18px', fontWeight: '600' }}>Top Doctors</h2>
           <a className="text-blue-800 text-underline text-sm" href="#">View All</a>
         </div>
-        <div className="overflow-x-scroll no-scrollbar">
+        <div className="pt-3 overflow-x-scroll no-scrollbar">
             <HorizontalCategoryItems />
         </div>
-        <DoctorItems />
-
-        <div className="mt-6 flex justify-between">
-          <h2 style={{fontSize: '18px', fontWeight: '600' }}>Available Doctors</h2>
-          <a className="text-blue-800 text-sm" href="#">View All</a>
+        <div className="pt-3">
+          <DoctorItems />
         </div>
-        <DoctorItems />
+        <div className="pt-6 flex justify-between">
+          <h2 style={{fontSize: '18px', fontWeight: '600' }}>Available Doctors</h2>
+          <a className="text-blue-800 text-sm" href="#">View All </a>
+        </div>
+        <div className="pt-3">
+          <DoctorItems />
+        </div>
         <div className="h-20"></div>
     </>
   );

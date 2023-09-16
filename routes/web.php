@@ -32,6 +32,9 @@ Route::get('/doctors/{id}', [DoctorController::class, 'show'])->name('doctors.sh
 Route::resource('appointment', AppointmentController::class);
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::get('/zoom', [ZoomController::class, 'create'])->name('zoom.create');
+Route::get('/appointments/{id}', function () {
+    return Inertia::render('AppointmentDetail');
+});
 
 
 Route::get('/dashboard', function () {
