@@ -16,9 +16,10 @@ class AppController extends Controller
 
     public function home(Request $request): Response
     {
+        
         return Inertia::render('AppLayout', [
             'doctors' => $this->getDoctors(),
-            // 'appoitments' => $this->getAppoitments(),
+            'appointments' => $this->getAppointments(),
         ]);
     }
 
@@ -27,11 +28,11 @@ class AppController extends Controller
         return Doctor::with('category')->get();
     }
 
-    public function getAppoitments()
+    public function getAppointments()
     {
         $patientId = Auth::user()->id;
         return Appointment::with(['doctor'])->where('patient_id', $patientId)->get();
     }
-    
+
 
 }
