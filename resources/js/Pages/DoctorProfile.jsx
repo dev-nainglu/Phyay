@@ -58,7 +58,7 @@ export default function DoctorProfile(
         <>
             <ContainerLayout>
 
-                <div className="max-w-2xl mx-4 mt-16 bg-white shadow-xl rounded-lg text-gray-900">
+                <div className="max-w-2xl mx-2 mt-16 bg-white shadow-xl rounded-lg text-gray-900">
                     <div className="rounded-t-lg h-20 overflow-hidden">
                     </div>
                     <div className="mx-auto w-32 h-32 relative -mt-16 border-4 border-white rounded-full overflow-hidden">
@@ -110,7 +110,7 @@ export default function DoctorProfile(
                     </ul>
                 </div>
 
-                <div className="max-w-2xl mx-4 p-3 mt-1 bg-white shadow-xl rounded-lg text-gray-900">
+                <div className="max-w-2xl mx-2 p-3 mt-1 bg-white shadow-xl rounded-lg text-gray-900">
                     <h3><b>About Doctor</b></h3>
                     <p className="text-xs text-blue-900">
                         {doctor.name} is a top specialist at London Bridge Hospital at London. He has achieved several awards and recognition for is contribution and service in his own field. He is available for private consultation.
@@ -118,7 +118,7 @@ export default function DoctorProfile(
                 </div>
                 <div className="mt-6">
                     <h3 className="mx-4"><b>Available Date</b></h3>
-                    <div className="mx-2 grid grid-cols-7 gap-2 text-center">
+                    <div className="ml-1 mr-4 grid grid-cols-7 gap-2 text-center">
                         <button className="custom-button">
                             <p className="text-primary"><b>Sun</b></p>
                             <p className="text-secondary">17</p>
