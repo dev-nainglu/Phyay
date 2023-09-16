@@ -35,14 +35,14 @@ export default function DoctorProfile(
     const bookAppointment = (timeslot) => {
         setTimeslot(timeslot)
 
-        const booking = useForm({
+        const booking = {
             name: patientName,
             age: patientAge,
             gender: gender,
             timeslot: timeslot,
             date: 'Sun 17',
             doctor: 'Soe Thura'
-        })
+        }
 
         WaveSDK.paymentModule.walletBalance().then((success) => {
             //if(){
@@ -50,7 +50,7 @@ export default function DoctorProfile(
                     setAge(success.response.data.transactionId)
                 })
             //}
-            booking.post('appointments');
+            //booking.post('appointments');
         });
     }
 
