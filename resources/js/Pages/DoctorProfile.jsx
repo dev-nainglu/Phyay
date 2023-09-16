@@ -1,8 +1,12 @@
 import { useState } from "react";
 import ContainerLayout from "./ContainerLayout";
 
-export default function DoctorProfile(){
-
+export default function DoctorProfile(
+{
+    doctor
+}
+){
+    console.log(doctor)
     const [patientName, setName] = useState('Naing Lu')
     const [patientAge, setAge] = useState('23')
     const [gender, setGender] = useState('Male')

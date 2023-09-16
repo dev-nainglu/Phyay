@@ -66,10 +66,6 @@ class DoctorResource extends Resource
                     ->disk('s3')
                     ->directory('doctors')
                     ->image()
-                    ->imageResizeMode('cover')
-                    ->imageCropAspectRatio('1:1')
-                    ->imageResizeTargetWidth('600')
-                    ->imageResizeTargetHeight('600')
                     ->getUploadedFileNameForStorageUsing(
                         function (TemporaryUploadedFile $file): string {
                             // uuid

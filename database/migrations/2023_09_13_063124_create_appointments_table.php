@@ -15,7 +15,6 @@ return new class extends Migration {
             $table->foreignId('doctor_id')->constrained('doctors')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('patient_id')->constrained('patients')->onDelete('cascade')->onUpdate('cascade');
             $table->dateTime('appointment_start_date');
-            $table->dateTime('appointment_end_date');
             $table->integer('duration');
             $table->integer('price');
             $table->enum('status', ['upcoming', 'completed', 'cancelled'])->default('upcoming');
