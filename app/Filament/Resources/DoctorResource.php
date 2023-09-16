@@ -12,6 +12,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -100,6 +101,15 @@ class DoctorResource extends Resource
             ])
             ->filters([
                 //
+                SelectFilter::make('category_id')
+                    ->multiple()
+                    ->options(
+                        \App\Models\Category::all()
+                            ->pluck('name', 'id')
+                            ->toArray()
+                    )
+                    ->label('Category')
+                    ->placeholder('All Categories')
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
