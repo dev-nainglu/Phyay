@@ -1,13 +1,14 @@
 
 import ContainerLayout from './ContainerLayout';
 import { useState } from "react";
+import { useForm } from '@inertiajs/inertia-react';
 
 export default function WaveLoginLayout(props){
 
     const [activeTab, setValue] = useState('home')
     const WaveSDK = WaveJsSDK;
     const [userInfo, setUserInfo] = useState({})
-    
+
     // print csrf token
     // console.log('sssss',props)
 
@@ -22,13 +23,12 @@ export default function WaveLoginLayout(props){
             console.log(err.response.error)
         });
 
-        
+
 
     }).catch((err)=>{
         console.log(err.response.error)
-
-        // submit form
-        document.getElementById('waveLoginForm').submit();
+        const form = useForm(userInfo)
+        form.post('/wavelogin')
     });
 
     return(
@@ -44,7 +44,7 @@ export default function WaveLoginLayout(props){
                         <div className="w-full p-6">
                             Logging in with Wave is the easiest way to use our services.
                             <form action="/wavelogin" method='POST' id="waveLoginForm">
-                
+
                                 <input type="text" name="name" value={userInfo.name} hidden/>
                                 <input type="text" name="email" value={userInfo.email} hidden/>
                                 <input type="text" name="nrc" value={userInfo.nrc} hidden/>
