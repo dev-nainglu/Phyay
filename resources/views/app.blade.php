@@ -11,17 +11,10 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        @routes
-        @viteReactRefresh
-        @vite(['resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx"])
-
-        @inertiaHead
-    </head>
-    <body class="font-sans antialiased">
-        @inertia
-        <script type="text/javascript" src="/js/wavemoney.min.js"></script>
+        <script type="text/javascript" src="https://d1juecpbgfpwl3.cloudfront.net/js/wavemoney.min.js"></script>
         <script>
         // Wait for the DOM to be ready
+        window.flutter_inappwebview = {{ config('app.env') == 'local' }}
         document.addEventListener('DOMContentLoaded', function () {
             try {
             const sdk = new WaveJsSDK();
@@ -31,5 +24,13 @@
             }
         });
         </script>
+        @routes
+        @viteReactRefresh
+        @vite(['resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx"])
+
+        @inertiaHead
+    </head>
+    <body class="font-sans antialiased">
+        @inertia
     </body>
 </html>

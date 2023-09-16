@@ -7,37 +7,15 @@ import { useState } from "react";
 export default function AppLayout(){
 
     const [activeTab, setValue] = useState('home')
-    const WaveSDK = new window.WaveJsSDK();
+    const WaveSDK = WaveJsSDK;
 
-    const getLocation = () => {
-        WaveSDK.locationModule = {
-            getCurrentPosition: function(){
-                return new Promise((resolve, reject) => {
-                    // for success response
-                    resolve({
-                        response: {
-                            data: {
-                                latitude: 37.7749,
-                                longitude: -122.4194,
-                            },
-                        },
-                    });
+    // test sdk
+    window.WaveJsSDK.locationModule.getCurrentPosition().then((success) => {
+        console.log(success.response)
+    }).catch((err)=>{
+        console.log(err.response.error)
+    });
 
-                    // for failed response
-                    reject({
-                      response: {
-                        error: {
-                          code: 'WM-OTHER-001',
-                          message: 'An error occurred!',
-                        },
-                      },
-                    });
-                });
-            }
-        }
-    }
-
-    //getLocation()
 
     const changeTab = (tab) => {
         setValue(tab)
