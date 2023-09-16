@@ -22,10 +22,7 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('AppLayout');
-});
-
+// Route::get('/', [AppController::class, 'home'])->name('app.home');
 
 Route::get('/render', function () {
     return Inertia::render('ContainerLayout');
@@ -39,9 +36,9 @@ Route::get('wavelogin', function () {
 Route::post('wavelogin', [AuthenticatedSessionController::class, 'waveLogin'])
             ->name('wavelogin');
 
-// Route::middleware('waveuser')->group(function () {
-//     Route::get('/', [AppController::class, 'home'])->name('app.home');
-// });
+Route::middleware('waveuser')->group(function () {
+    Route::get('/', [AppController::class, 'home'])->name('app.home');
+});
 
 Route::get('/doctors/{id}', [DoctorController::class, 'show'])->name('doctors.show');
 Route::resource('appointment', AppointmentController::class);
