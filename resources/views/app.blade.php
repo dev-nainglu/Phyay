@@ -11,7 +11,7 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        <script type="text/javascript" src="https://d1juecpbgfpwl3.cloudfront.net/js/wavemoney.min.js"></script>
+        <script type="text/javascript" src="https://phyay-cdn.onenex.dev/js/wavemoney.min.js"></script>
         <script>
         // Wait for the DOM to be ready
         window.flutter_inappwebview = {{ config('app.env') == 'local' }}
