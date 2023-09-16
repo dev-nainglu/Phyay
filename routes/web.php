@@ -49,6 +49,10 @@ Route::get('/appointments/{id}', function () {
 });
 
 
+Route::get('/appointmentMake/{id}', function () {
+    return Inertia::render('AppointmentConfirm');
+});
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
