@@ -6,6 +6,7 @@ use App\Filament\Resources\AppointmentResource\Pages;
 use App\Filament\Resources\AppointmentResource\RelationManagers;
 use App\Models\Appointment;
 use DanHarrin\LivewireRateLimiting\Tests\Component;
+use Filament\Tables\Actions\Action;
 use Filament\Forms;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Select;
@@ -104,6 +105,8 @@ class AppointmentResource extends Resource
                     ->required()
                     ->searchable()
                     ->native(false),
+                TextInput::make('meeting_link')
+                    ->placeholder(__('Meeting Link'))
             ]);
     }
 
@@ -134,7 +137,13 @@ class AppointmentResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                // Tables\Actions\EditAction::make(),
+                // zoom link button
+                Action::make('Meeting Link')
+                    ->label('Meeting Link')
+                    ->icon('icon-appointment')
+                    ->url(fn(Appointment $appointment) => $appointment->meeting_link)
+                    ->openUrlInNewTab(),
             ])
             ->recordUrl(fn() => null)
             ->bulkActions([
