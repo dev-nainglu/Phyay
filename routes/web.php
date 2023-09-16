@@ -30,6 +30,7 @@ use Inertia\Inertia;
 Route::get('/render', function () {
     return Inertia::render('ContainerLayout');
 });
+Route::get('/category-doctors/{id}', [DoctorController::class, 'index'])->name('doctors.index');
 
 Route::get('wavelogin', function () {
     return Inertia::render('WaveLoginLayout');

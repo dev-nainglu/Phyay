@@ -12,41 +12,49 @@ export default function CategoryItems(props){
 
     const cards = [
         {
+            id: 4,
             imgSrc: workStressIcon,
             categoryTitle: 'Sex Edu'
         },
 
         {
+            id: 5,
             imgSrc: abuseIcon,
             categoryTitle: 'LGBTQ+'
         },
 
         {
+            id: 6,
             imgSrc: ancietyIcon,
             categoryTitle: 'Youth Support'
         },
 
         {
+            id: 8,
             imgSrc: disorderIcon,
             categoryTitle: 'Disorder'
         },
 
         {
+            id: 7,
             imgSrc: depressIcon,
             categoryTitle: 'Depression'
         },
 
         {
+            id: 3,
             imgSrc: youthSupportIcon,
             categoryTitle: 'Workplace'
         },
 
         {
+            id: 2,
             imgSrc: sexEducation,
             categoryTitle: 'Anxiety'
         },
 
         {
+            id: 1,
             imgSrc: lgbtqIcon,
             categoryTitle: 'Abuse'
         }
@@ -56,7 +64,7 @@ export default function CategoryItems(props){
         <>
             <div className="grid grid-cols-4 gap-4 mt-2" key="">
                 {cards.map((card, index) => (
-                    <a key={index} href={"/render?type=category&value=" + card.categoryTitle}>
+                    <a key={index} href={"/category-doctors/" + card.id}>
                     <div  className="text-center">
                     <div className="rounded-full text-1xl font-bold tracking-tight text-gray-900 dark:text-white" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', padding: 20, backgroundColor: '#EBF1FF' }}>
                         <img

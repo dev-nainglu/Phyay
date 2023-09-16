@@ -27,18 +27,14 @@ class DoctorController extends Controller
      * Return the list of doctors for the given category.
      */
 
-    public function index(string $id): Response
+    public function index(int $id): Response
     {
         // query the doctors by category id, exclude timestamps
-        $doctors = Doctor::where('category_id', $id)->get(['id', 'name', 'experience', 'fee', 'image', 'category_id']);
-        // query category by id, only get the name
-        $category = Category::find($id, ['name']);
-        // replace category_id with category name in doctors
-        foreach ($doctors as $doctor) {
-            $doctor->setAttribute('category', $category->name);
-        }
-        return Inertia::render('Doctors', [
+        $doctors = Doctor::with(['category'])->where('category_id', $id)->get();
+
+        return Inertia::render('DoctorsLayout', [
             'doctors' => $doctors,
+            'title' => $doctors->first()->category_name,
         ]);
 
     }
