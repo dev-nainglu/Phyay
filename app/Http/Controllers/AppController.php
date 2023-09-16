@@ -16,6 +16,7 @@ class AppController extends Controller
 
     public function home(Request $request): Response
     {
+        
         return Inertia::render('AppLayout', [
             'doctors' => $this->getDoctors(),
             // 'appoitments' => $this->getAppoitments(),

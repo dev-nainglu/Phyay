@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf_token" content="{{ csrf_token() }}" />
 
         <title inertia>{{ config('app.name', 'Laravel') }}</title>
 
@@ -13,6 +14,7 @@
         <!-- Scripts -->
         <script type="text/javascript" src="https://phyay-cdn.onenex.dev/js/wavemoney.min.js"></script>
         <script>
+        window.csrf_token = "{{ csrf_token() }}"
         // Wait for the DOM to be ready
         window.flutter_inappwebview = {{ config('app.env') == 'local' }}
         document.addEventListener('DOMContentLoaded', function () {
