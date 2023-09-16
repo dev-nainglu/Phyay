@@ -16,12 +16,6 @@ class AppController extends Controller
 
     public function home(Request $request): Response
     {
-
-        $waveUser = $request->session()->get('waveUser');
-        if($waveUser){
-            Auth::login($waveUser);
-            info('home user', [Auth::user()]);
-        }
         return Inertia::render('AppLayout', [
             'doctors' => $this->getDoctors(),
             // 'appoitments' => $this->getAppoitments(),
