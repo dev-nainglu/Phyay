@@ -25,6 +25,8 @@ export default function AppointmentItems(props) {
     // Add more card data as needed
   ];
 
+  const appointments =props.appointments;
+
   return (
     <>
             <div className="grid grid-row-1 gap-2" key="">

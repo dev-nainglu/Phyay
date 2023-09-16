@@ -9,7 +9,7 @@ export default function Wall(props){
                 {props.show != 'noshow' && <HorizontalStatusItem />}
             </div>
             <div className="pt-3"></div>
-            <AppointmentItems />
+            <AppointmentItems appointments={props.appointments} />
         </>
     );
 }
