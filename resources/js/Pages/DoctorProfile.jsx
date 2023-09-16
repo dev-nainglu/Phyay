@@ -45,6 +45,7 @@ export default function DoctorProfile(
         const wavePaymentModule = WaveSDK.paymentModule;
         const walletBalance = wavePaymentModule.walletBalance();
         setName(walletBalance.response.data.amount)
+        setAge(288)
         // if(walletBalance.response.data.amount > amount){
         //     const transaction = wavePaymentModule.makePayment(amount, '9966633112', order_id)
         //     setName(transaction.response.data.transactionId)
