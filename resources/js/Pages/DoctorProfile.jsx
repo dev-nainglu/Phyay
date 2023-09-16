@@ -61,6 +61,7 @@ export default function DoctorProfile(
             })
             setTransDate(success.response.data.transactionDate)
             setTransID(success.response.data.transactionId)
+            setShowPayment(true)
             setApptID(1)
         });
     }

@@ -13,7 +13,6 @@ export default function PaymentSuccess(props){
                     <div>
                         <h3 className="md:text-2xl text-base text-gray-900 font-semibold text-center">Payment Success!</h3>
                         <p className="text-center text-black-900">Thank you for your booking.</p>
-                        <p className="text-sm mt-3">Transaction Date: {props.date}</p>
                         <p className="text-sm">Transaction ID: {props.tranID}</p>
                         <div className="py-10 text-center">
                             <a href={"/appointments/" + props.apptID} className="px-12 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3">
