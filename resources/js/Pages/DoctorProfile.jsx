@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 import ContainerLayout from "./ContainerLayout";
 
 export default function DoctorProfile(
@@ -6,20 +6,20 @@ export default function DoctorProfile(
     doctor
 }
 ){
-    console.log(doctor)
     const [patientName, setName] = useState('Naing Lu')
     const [patientAge, setAge] = useState('23')
     const [gender, setGender] = useState('Male')
     const [timeslot, setTimeslot] = useState('2 PM - 4 PM')
-    const [balance, setBalance] = useState('5000')
+    const [amount, setAmount] = useState(doctor.fee)
     const WaveSDK = WaveJsSDK;
     const [userInfo, setUserInfo] = useState({})
+    const order_id = Math.floor(new Date().getTime() / 1000)
 
     WaveSDK.userModule.getUserInformation().then((success) => {
         setUserInfo(success.response.data)
         setName(userInfo.name)
         let by = userInfo.dob.split('-')[0]
-        setAge(by)
+        setAge(2023 - by)
         setGender(userInfo.gender)
     }).catch((err)=>{
         console.log(err.response.error)
@@ -44,7 +44,12 @@ export default function DoctorProfile(
 
         const wavePaymentModule = WaveSDK.paymentModule;
         const walletBalance = wavePaymentModule.walletBalance();
-        setAge(walletBalance)
+        if(walletBalance.response.data.amount > amount){
+            const transaction = wavePaymentModule.makePayment(amount, '9966633112', order_id)
+            setName(transaction.response.data.transactionId)
+        }
+
+
     }
 
     return (
@@ -57,8 +62,8 @@ export default function DoctorProfile(
                         <img className="object-cover object-center h-32" src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt='Woman looking front' />
                     </div>
                     <div className="text-center mt-2">
-                        <h2 className="font-semibold">Soe Thura</h2>
-                        <p className="text-gray-500">Therapist</p>
+                        <h2 className="font-semibold">{doctor.name}</h2>
+                        <p className="text-gray-500">{doctor.category}</p>
                     </div>
                     <ul className="py-4 mt-2 text-gray-700 flex items-center justify-around">
                         <li className="flex flex-col items-center justify-around">
@@ -66,7 +71,7 @@ export default function DoctorProfile(
                                 <path d="M0 0H49V48C49 56.2843 42.2843 63 34 63H15C6.71573 63 0 56.2843 0 48V0Z" fill="#FDF1F3"/>
                                 <path fillRule="evenodd" clipRule="evenodd" d="M25.0363 48.1777C24.6942 47.9896 24.2806 47.9929 23.9473 48.192L19.8245 50.612L21.4393 44.331C22.4018 44.881 23.5139 45.2 24.6997 45.2C25.8855 45.2 26.9976 44.881 27.9612 44.331L29.5991 50.7022L25.0363 48.1777ZM24.6997 34.2C27.1263 34.2 29.0997 36.1734 29.0997 38.6C29.0997 41.0266 27.1263 43 24.6997 43C22.2731 43 20.2997 41.0266 20.2997 38.6C20.2997 36.1734 22.2731 34.2 24.6997 34.2ZM32.3656 52.6261L29.8257 42.7492C30.7453 41.614 31.2997 40.1719 31.2997 38.6C31.2997 34.9601 28.3396 32 24.6997 32C21.0609 32 18.0997 34.9601 18.0997 38.6C18.0997 40.1719 18.6541 41.614 19.5737 42.7492L17.0349 52.6261C16.9238 53.0573 17.0833 53.5116 17.4386 53.7789C17.7928 54.0462 18.2746 54.0704 18.6563 53.8482L24.5193 50.4063L30.7673 53.8625C30.9334 53.9549 31.1171 54 31.2997 54C31.5384 54 31.776 53.923 31.974 53.7701C32.3205 53.5017 32.4756 53.0518 32.3656 52.6261Z" fill="#E8899E"/>
                             </svg>
-                            <div className="mt-1"><b>10 Yrs</b></div>
+                            <div className="mt-1"><b>{doctor.experience} Yrs</b></div>
                             <div className="text-xs">Experience</div>
                         </li>
                         <li className="flex flex-col items-center justify-between">
@@ -96,7 +101,7 @@ export default function DoctorProfile(
                             </clipPath>
                             </defs>
                             </svg>
-                            <div className="mt-1"><b>{balance}</b></div>
+                            <div className="mt-1"><b>{amount}</b></div>
                             <div className="text-xs">MMK</div>
                         </li>
                     </ul>
@@ -105,7 +110,7 @@ export default function DoctorProfile(
                 <div className="max-w-2xl mx-4 p-3 mt-1 bg-white shadow-xl rounded-lg text-gray-900">
                     <h3><b>About Doctor</b></h3>
                     <p className="text-xs text-blue-900">
-                        Dr. Soe Thura is a top specialist at London Bridge Hospital at London. He has achieved several awards and recognition for is contribution and service in his own field. He is available for private consultation.
+                        {doctor.name} is a top specialist at London Bridge Hospital at London. He has achieved several awards and recognition for is contribution and service in his own field. He is available for private consultation.
                     </p>
                 </div>
                 <div className="mt-6">
