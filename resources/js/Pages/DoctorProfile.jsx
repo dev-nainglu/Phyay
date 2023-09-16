@@ -1,5 +1,6 @@
 import { useId, useState } from "react";
 import ContainerLayout from "./ContainerLayout";
+import { useForm } from "@inertiajs/inertia-react";
 
 export default function DoctorProfile(
 {
@@ -14,6 +15,7 @@ export default function DoctorProfile(
     const WaveSDK = WaveJsSDK;
     const [userInfo, setUserInfo] = useState({})
     const order_id = Math.floor(new Date().getTime() / 1000)
+    const form = useForm()
 
     WaveSDK.userModule.getUserInformation().then((success) => {
         setUserInfo(success.response.data)
@@ -33,14 +35,14 @@ export default function DoctorProfile(
     const bookAppointment = (timeslot) => {
         setTimeslot(timeslot)
 
-        const booking = {
+        const booking = useForm({
             name: patientName,
             age: patientAge,
             gender: gender,
             timeslot: timeslot,
             date: 'Sun 17',
             doctor: 'Soe Thura'
-        }
+        })
 
         WaveSDK.paymentModule.walletBalance().then((success) => {
             //if(){
@@ -48,6 +50,7 @@ export default function DoctorProfile(
                     setAge(success.response.data.transactionId)
                 })
             //}
+            booking.post('appointments');
         });
     }
 

@@ -31,8 +31,6 @@ Route::get('/render', function () {
     return Inertia::render('ContainerLayout');
 });
 
-Route::get('wavelogin', [AuthenticatedSessionController::class, 'waveLogin'])
-    ->name('wavelogin');
 Route::post('wavelogin', [AuthenticatedSessionController::class, 'waveLogin'])
     ->name('wavelogin');
 
