@@ -49,11 +49,12 @@ export default function DoctorProfile(
             status: 'upcoming',
         }
 
-        console.log(order_id)
-        setShowPayment(true)
 
-        const response = await WaveSDK.paymentModule.makePayment(3000, '9966633112', 'tty');
-        setTransID(response.response.data.transactionId)
+        const response = await WaveJsSDK.paymentModule?.makePayment(amount, '9784489866', order_id)
+        const data = response?.response.data
+
+        if (data) setTransID(data.transactionId)
+
         router.post('/appointment', booking)
     }
 
