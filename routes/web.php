@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\AppController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ZoomController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -20,14 +22,20 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('AppLayout');
-});
+// Route::get('/', function () {
+//     return Inertia::render('AppLayout');
+// });
+Route::get('/', [AppController::class, 'home'])->name('app.home');
 
 Route::get('/render', function () {
     return Inertia::render('ContainerLayout');
 });
 
+Route::get('wavelogin', [AuthenticatedSessionController::class, 'waveLogin'])
+                ->name('wavelogin');
+Route::post('wavelogin', [AuthenticatedSessionController::class, 'waveLogin'])
+            ->name('wavelogin');
+            
 Route::get('/doctors/{id}', [DoctorController::class, 'show'])->name('doctors.show');
 Route::resource('appointment', AppointmentController::class);
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');

@@ -4,7 +4,7 @@ import AppointmentList from "./Layouts/AppointmentList";
 import Profile from "./Layouts/Profile";
 import { useState } from "react";
 
-export default function AppLayout(){
+export default function AppLayout(props){
 
     const [activeTab, setValue] = useState('home')
     const WaveSDK = WaveJsSDK;
@@ -37,7 +37,7 @@ export default function AppLayout(){
             <main className="mx-3">
                 <div className="mt-30">
                     {activeTab == 'home' && <Wall />}
-                    {activeTab == 'doctors' && <DoctorList />}
+                    {activeTab == 'doctors' && <DoctorList doctors={props.doctors} />}
                     {activeTab == 'appointments' && <AppointmentList />}
                     {activeTab == 'profile' && <Profile />}
                 </div>
