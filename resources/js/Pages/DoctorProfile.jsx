@@ -54,6 +54,7 @@ export default function DoctorProfile(
         const data = response?.response.data
 
         if (data) setTransID(data.transactionId)
+        setShowPayment(true)
 
         router.post('/appointment', booking)
     }
