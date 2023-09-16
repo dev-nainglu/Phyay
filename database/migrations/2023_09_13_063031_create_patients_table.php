@@ -14,6 +14,14 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->date('date_of_birth');
+            $table->enum(
+                'gender',
+                [
+                    'Male',
+                    'Female',
+                    'Other'
+                ]
+            );
             $table->string('phone_number');
             $table->timestamps();
         });

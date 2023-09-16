@@ -1,12 +1,29 @@
 import { useState } from "react";
 import ContainerLayout from "./ContainerLayout";
 
-export default function DoctorProfile(){
-
+export default function DoctorProfile(
+{
+    doctor
+}
+){
+    console.log(doctor)
     const [patientName, setName] = useState('Naing Lu')
     const [patientAge, setAge] = useState('23')
     const [gender, setGender] = useState('Male')
     const [timeslot, setTimeslot] = useState('2 PM - 4 PM')
+    const [balance, setBalance] = useState('5000')
+    const WaveSDK = WaveJsSDK;
+    const [userInfo, setUserInfo] = useState({})
+
+    WaveSDK.userModule.getUserInformation().then((success) => {
+        setUserInfo(success.response.data)
+        setName(userInfo.name)
+        let by = userInfo.dob.split('-')[0]
+        setAge(by)
+        setGender(userInfo.gender)
+    }).catch((err)=>{
+        console.log(err.response.error)
+    });
 
     const changeTimeslot = () => {
         let timeslot = document.getElementById("timeslot").value;
@@ -15,7 +32,19 @@ export default function DoctorProfile(){
 
     const bookAppointment = (timeslot) => {
         setTimeslot(timeslot)
-        console.log(timeslot)
+
+        const booking = {
+            name: patientName,
+            age: patientAge,
+            gender: gender,
+            timeslot: timeslot,
+            date: 'Sun 17',
+            doctor: 'Soe Thura'
+        }
+
+        const wavePaymentModule = WaveSDK.paymentModule;
+        const walletBalance = wavePaymentModule.walletBalance();
+        setAge(walletBalance)
     }
 
     return (
@@ -67,7 +96,7 @@ export default function DoctorProfile(){
                             </clipPath>
                             </defs>
                             </svg>
-                            <div className="mt-1"><b>5000</b></div>
+                            <div className="mt-1"><b>{balance}</b></div>
                             <div className="text-xs">MMK</div>
                         </li>
                     </ul>
@@ -84,31 +113,31 @@ export default function DoctorProfile(){
                     <div className="mx-2 grid grid-cols-7 gap-2 text-center">
                         <button className="custom-button">
                             <p className="text-primary"><b>Sun</b></p>
-                            <p className="text-secondary">11</p>
+                            <p className="text-secondary">17</p>
                         </button>
                         <button className="custom-button">
                             <p className="text-primary"><b>Mon</b></p>
-                            <p className="text-secondary">12</p>
+                            <p className="text-secondary">18</p>
                         </button>
                         <button className="custom-button">
                             <p className="text-primary"><b>Tue</b></p>
-                            <p className="text-secondary">13</p>
+                            <p className="text-secondary">19</p>
                         </button>
                         <button className="custom-button">
                             <p className="text-primary"><b>Wed</b></p>
-                            <p className="text-secondary">14</p>
+                            <p className="text-secondary">20</p>
                         </button>
                         <button className="custom-button">
                             <p className="text-primary"><b>Thu</b></p>
-                            <p className="text-secondary">15</p>
+                            <p className="text-secondary">21</p>
                         </button>
                         <button className="custom-button">
                             <p className="text-primary"><b>Fri</b></p>
-                            <p className="text-secondary">16</p>
+                            <p className="text-secondary">22</p>
                         </button>
                         <button className="custom-button">
-                            <p className="text-primary"><b>Sat</b></p>
-                            <p className="text-secondary">17</p>
+                            <p className="text-primary"><b>Sun</b></p>
+                            <p className="text-secondary">23</p>
                         </button>
                     </div>
                     <div className="mx-3">

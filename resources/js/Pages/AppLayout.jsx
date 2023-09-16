@@ -7,37 +7,16 @@ import { useState } from "react";
 export default function AppLayout(){
 
     const [activeTab, setValue] = useState('home')
-    const WaveSDK = new window.WaveJsSDK();
+    const WaveSDK = WaveJsSDK;
+    const [userInfo, setUserInfo] = useState({})
 
-    const getLocation = () => {
-        WaveSDK.locationModule = {
-            getCurrentPosition: function(){
-                return new Promise((resolve, reject) => {
-                    // for success response
-                    resolve({
-                        response: {
-                            data: {
-                                latitude: 37.7749,
-                                longitude: -122.4194,
-                            },
-                        },
-                    });
+    WaveSDK.userModule.getUserInformation().then((success) => {
+        setUserInfo(success.response.data)
 
-                    // for failed response
-                    reject({
-                      response: {
-                        error: {
-                          code: 'WM-OTHER-001',
-                          message: 'An error occurred!',
-                        },
-                      },
-                    });
-                });
-            }
-        }
-    }
+    }).catch((err)=>{
+        console.log(err.response.error)
+    });
 
-    //getLocation()
 
     const changeTab = (tab) => {
         setValue(tab)
@@ -48,7 +27,7 @@ export default function AppLayout(){
             {activeTab == 'home' && <div id="sticky-banner" tabIndex="-1" className="fixed top-0 left-0 z-50 justify-between w-full p-4 border-b border-gray-200 bg-gray-50">
                 <div className="flex items-center mx-auto">
                     <p className="flex items-center text-sm font-normal text-gray-500 dark:text-gray-400">
-                        <span>Welcome, <a href="#" className="inline font-medium text-blue-600 underline dark:text-blue-500 underline-offset-2 decoration-600 dark:decoration-500 decoration-solid hover:no-underline">Naing Lu!</a></span>
+                        <span>Welcome, <a href="#" className="inline font-medium text-blue-600 underline dark:text-blue-500 underline-offset-2 decoration-600 dark:decoration-500 decoration-solid hover:no-underline">{userInfo.name}!</a></span>
                     </p>
                 </div>
             </div>}
