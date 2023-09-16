@@ -5,7 +5,7 @@ import AppoinmentStatusCard from './Components/AppoinmentStatusCard';
 
 
 export default function AppointmentDetail(props){
-
+    console.log(props)
     return(
         <>
         <ContainerLayout>

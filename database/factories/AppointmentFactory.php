@@ -17,8 +17,8 @@ class AppointmentFactory extends Factory
     public function definition(): array
     {
         return [
-            //
-            'appointment_start_date' => $this->faker->dateTimeBetween('now', '+1 years'),
+            // time in even hours
+            'appointment_start_date' => $this->faker->dateTimeBetween('now', '+1 week')->format('Y-m-d H:00:00'),
             'duration' => $this->faker->randomElement(
                 [
                     1,

@@ -18,7 +18,8 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'description' => $this->faker->paragraph(),
+            // max 255 characters
+            'description' => $this->faker->text(255),
         ];
     }
 }
