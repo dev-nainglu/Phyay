@@ -8,7 +8,7 @@ export default function AppLayout(){
 
     const [activeTab, setValue] = useState('home')
     const WaveSDK = WaveJsSDK;
-    const [userInfo, setUserInfo] = useState()
+    const [userInfo, setUserInfo] = useState({})
 
     WaveSDK.userModule.getUserInformation().then((success) => {
         setUserInfo(success.response.data)
