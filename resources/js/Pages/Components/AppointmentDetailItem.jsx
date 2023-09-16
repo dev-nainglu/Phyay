@@ -1,101 +1,80 @@
 export default function AppointmentDetail(props){
+    console.log(props)
     return(
         <>
 
-<div class="w-full mt-2 p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8">
-    <div class="flex items-center justify-between mb-4">
-        <h5 class="text-xl font-bold leading-none text-gray-900">Appointment Detail</h5>
+<div className="w-full mt-2 p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8">
+    <div className="flex items-center justify-between mb-4">
+        <h5 className="text-xl font-bold leading-none text-gray-900">Appointment Detail</h5>
 
             </div>
-            <div class="flow-root">
-                    <ul role="list" class="divide-y divide-gray-200">
-                        <li class="py-3 sm:py-4">
-                            <div class="flex items-center space-x-4">
-                                <div class="flex-shrink-0">
-                                    <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Neil image"/>
-                                </div>
-                                <div class="flex-1 min-w-0">
-                                    <p class="text-sm font-medium text-gray-900 truncate">
-                                        Neil Sims
+            <div className="flow-root">
+                    <ul role="list" className="divide-y divide-gray-200">
+                        <li className="py-3 sm:py-4">
+                            <div className="flex items-center space-x-4">
+
+                                <div className="flex-1 min-w-0">
+                                    <p className="text-sm font-medium text-gray-900 truncate">
+                                        Appointment Date
                                     </p>
-                                    <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                                        email@windster.com
+                                    <p className="text-sm text-gray-800 truncate">
+                                        17 September, 2023
                                     </p>
-                                </div>
-                                <div class="inline-flex items-center text-base font-semibold text-gray-900">
-                                    $320
                                 </div>
                             </div>
                         </li>
-                        <li class="py-3 sm:py-4">
-                            <div class="flex items-center space-x-4">
-                                <div class="flex-shrink-0">
-                                    <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="Bonnie image" />
-                                </div>
-                                <div class="flex-1 min-w-0">
-                                    <p class="text-sm font-medium text-gray-900 truncate">
-                                        Bonnie Green
+                        <li className="py-3 sm:py-4">
+                            <div className="flex items-center space-x-4">
+
+                                <div className="flex-1 min-w-0">
+                                    <p className="text-sm font-medium text-gray-900 truncate">
+                                        Appointment Time
                                     </p>
-                                    <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                                        email@windster.com
+                                    <p className="text-sm text-gray-800 truncate">
+                                        1 PM - 2 PM
                                     </p>
-                                </div>
-                                <div class="inline-flex items-center text-base font-semibold text-gray-900">
-                                    $3467
                                 </div>
                             </div>
                         </li>
-                        <li class="py-3 sm:py-4">
-                            <div class="flex items-center space-x-4">
-                                <div class="flex-shrink-0">
-                                    <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-2.jpg" alt="Michael image" />
-                                </div>
-                                <div class="flex-1 min-w-0">
-                                    <p class="text-sm font-medium text-gray-900 truncate">
-                                        Michael Gough
+                        <li className="py-3 sm:py-4">
+                            <div className="flex items-center space-x-4">
+
+                                <div className="flex-1 min-w-0">
+                                    <p className="text-sm font-medium text-gray-900 truncate">
+                                        Category
                                     </p>
-                                    <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                                        email@windster.com
+                                    <p className="text-sm text-gray-800 truncate">
+                                        General
                                     </p>
-                                </div>
-                                <div class="inline-flex items-center text-base font-semibold text-gray-900">
-                                    $67
                                 </div>
                             </div>
                         </li>
-                        <li class="py-3 sm:py-4">
-                            <div class="flex items-center space-x-4">
-                                <div class="flex-shrink-0">
-                                    <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-4.jpg" alt="Lana image" />
-                                </div>
-                                <div class="flex-1 min-w-0">
-                                    <p class="text-sm font-medium text-gray-900 truncate">
-                                        Lana Byrd
+                        <li className="py-3 sm:py-4">
+                            <div className="flex items-center space-x-4">
+
+                                <div className="flex-1 min-w-0">
+                                    <p className="text-sm font-medium text-gray-900 truncate">
+                                        Your Problem
                                     </p>
-                                    <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                                        email@windster.com
+                                    <p className="text-sm text-gray-800 truncate">
+                                        "I want to quit smoking"
                                     </p>
-                                </div>
-                                <div class="inline-flex items-center text-base font-semibold text-gray-900">
-                                    $367
                                 </div>
                             </div>
                         </li>
-                        <li class="pt-3 pb-0 sm:pt-4">
-                            <div class="flex items-center space-x-4">
-                                <div class="flex-shrink-0">
-                                    <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt="Thomas image" />
-                                </div>
-                                <div class="flex-1 min-w-0">
-                                    <p class="text-sm font-medium text-gray-900 truncate">
-                                        Thomes Lean
+                        <li className="py-3 sm:py-4">
+                            <div className="flex items-center space-x-4">
+
+                                <div className="flex-1 min-w-0">
+                                    <p className="text-sm font-medium text-gray-900 truncate">
+                                        Meeting Link
                                     </p>
-                                    <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                                        email@windster.com
-                                    </p>
-                                </div>
-                                <div class="inline-flex items-center text-base font-semibold text-gray-900">
-                                    $2367
+                                        <a href="https://us04web.zoom.us/j/74163162756?pwd=Ec2qoH6SSFGLy1XpCPNDcuHFbb8xba.1" class="inline-flex items-center font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                        https://us04web.zoom.us/j/74163162756?pwd=Ec2qoH6SSFGLy1XpCPNDcuHFbb8xba.1
+                                        <svg class="w-4 h-4 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                        </svg>
+                                        </a>
                                 </div>
                             </div>
                         </li>

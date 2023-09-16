@@ -20,7 +20,6 @@ export default function DoctorProfile(
     const [transDate, setTransDate] = useState('14/ 09/ 2023')
     const [apptID, setApptID] = useState(1)
     const [showPayment, setShowPayment] = useState(false);
-    const [text, setText] = useState('all')
 
     WaveSDK.userModule.getUserInformation().then((success) => {
         setUserInfo(success.response.data)
@@ -38,26 +37,25 @@ export default function DoctorProfile(
 
     const bookAppointment = async (timeslot) => {
 
-        const booking = {
-            doctor_id: doctor.id,
-            name: 'Naing Lu',
-            dob: '1998-09-17',
-            phone: '9966633112',
-            gender: 'Male',
-            appointment_start_date: "2023-09-17 10:00:00",
-            duration: 2,
-            price: doctor.fee * 2,
-            status: 'upcoming',
-        }
-
+        // const booking = {
+        //     doctor_id: doctor.id,
+        //     name: 'Naing Lu',
+        //     dob: '1998-09-17',
+        //     phone: '9966633112',
+        //     gender: 'Male',
+        //     appointment_start_date: "2023-09-17 10:00:00",
+        //     duration: 2,
+        //     price: doctor.fee * 2,
+        //     status: 'upcoming',
+        // }
 
         const response = await WaveJsSDK.paymentModule?.makePayment(amount, '9784489866', order_id)
         const data = response?.response.data
 
-        if (data) setText(data)
+        // if (data) setText(data)
         setShowPayment(true)
 
-        router.post('/appointment', booking)
+        //router.post('/appointment', booking)
     }
 
     return (
@@ -193,7 +191,7 @@ export default function DoctorProfile(
                         </fieldset>
 
                         <label htmlFor="message" className="block mt-4 mb-2 text-sm font-medium text-gray-900">Write your problem</label>
-                        <textarea id="message" rows="4" defaultValue={text} className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Leave a comment..."></textarea>
+                        <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Leave a comment..."></textarea>
                         <button type="submit" onClick={() => bookAppointment(timeslot)} className="w-full mb-10 text-white mt-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Book Appointment</button>
                     </div>
                 </div></div>

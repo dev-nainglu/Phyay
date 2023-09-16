@@ -4,7 +4,6 @@ import AppoinmentStatusCard from './Components/AppoinmentStatusCard';
 export default function AppointmentConfirm(props){
     return(
         <>
-        <ContainerLayout>
             <div className="bg-gray-100">
                 <div className="bg-white p-6  md:mx-auto">
                     <svg viewBox="0 0 24 24" className="text-green-600 w-16 h-16 mx-auto my-6">
@@ -19,11 +18,10 @@ export default function AppointmentConfirm(props){
                 </div>
             </div>
             <AppoinmentStatusCard />
-            <div class="mt-6 flex flex-nowrap">
-                <a href="/" class="w-1/2 text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">Close</a>
-                <a href={"/appointments/" + props.apptID} class="w-1/2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 text-center focus:outline-none">View</a>
+            <div className="mt-6 flex flex-nowrap">
+                <a href="/" className="w-1/2 text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">Close</a>
+                <a href={"/appointments/" + props.apptID} className="w-1/2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 text-center focus:outline-none">View</a>
             </div>
-        </ContainerLayout>
         </>
     )
 }
