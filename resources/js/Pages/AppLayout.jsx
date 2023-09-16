@@ -9,6 +9,8 @@ export default function AppLayout(props){
     const [activeTab, setValue] = useState('home')
     const WaveSDK = WaveJsSDK;
     const [userInfo, setUserInfo] = useState({})
+    // const [doctors, setDoctors] = useState([])
+    // setDoctors(props.doctors)
 
     WaveSDK.userModule.getUserInformation().then((success) => {
         setUserInfo(success.response.data)
@@ -74,9 +76,9 @@ export default function AppLayout(props){
             <hr className="h-px my-2 bg-gray-300 border-0"></hr>
             <main className="mx-3">
                 <div className="mt-30">
-                    {activeTab == 'home' && <Wall />}
+                    {activeTab == 'home' && <Wall doctors={props.doctors } />}
                     {activeTab == 'doctors' && <DoctorList doctors={props.doctors} />}
-                    {activeTab == 'appointments' && <AppointmentList />}
+                    {activeTab == 'appointments' && <AppointmentList appointments={props.appointments} />}
                     {activeTab == 'profile' && <Profile />}
                 </div>
             </main>

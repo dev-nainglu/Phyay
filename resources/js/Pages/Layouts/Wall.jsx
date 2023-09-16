@@ -46,14 +46,14 @@ export default function Wall(props) {
             <HorizontalCategoryItems />
         </div>
         <div className="pt-3">
-          <DoctorItems />
+          <DoctorItems doctors={props.doctors.slice(0, 2)} />
         </div>
         <div className="pt-6 flex justify-between">
           <h2 style={{fontSize: '18px', fontWeight: '600' }}>Available Doctors</h2>
           <a className="text-blue-800 text-sm" href="#">View All </a>
         </div>
         <div className="pt-3">
-          <DoctorItems />
+          <DoctorItems doctors={props.doctors.slice(0, 4)} />
         </div>
         <div className="h-20"></div>
     </>

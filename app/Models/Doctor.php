@@ -25,7 +25,7 @@ class Doctor extends Model
 
     public function getImageUrlAttribute()
     {
-        return config('filesystems.disks.s3.url') . '/' . $this->image;
+        return $this->image ? config('filesystems.disks.s3.url') . '/' . $this->image : 'https://i.pravatar.cc/200';
     }
 
 

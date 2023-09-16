@@ -1,44 +1,23 @@
 import React from 'react';
 import ratingIcon from '/resources/assets/Rating.svg'
 import jobIcon from '/resources/assets/Job.svg'
+import { random } from 'lodash';
 
 export default function DoctorItems(props) {
 
-  const cards = [
-    {
-      id: 1,
-      name: 'Soe Thura',
-      numberOfPatients: '(320)',
-      rating: '4.5',
-      position: 'Doctor',
-      numberOfExperience: '12 Years',
-      fees: '3,000 MMK',  // Default rating label
-      category: 'Disorder'
-    },
-    {
-        id: 2,
-        name: 'Naing Lu',
-        numberOfPatients: '(320)',
-        rating: '4.5',
-        position: 'Therapist',
-        numberOfExperience: '20 Years',
-        fees: '3,000 MMK',        // Default rating label
-        category: 'Anxiety'
-    },
-    // Add more card data as needed
-  ];
+  let doctors = props.doctors;
 
   return (
     <>
       <div className="grid grid-cols-2 gap-2" key="">
-        {cards.map((card, index) => (
+        {doctors.map((card, index) => (
           <div
             key={index} // Use a unique key for each item in the map
             className="max-w-sm bg-white border border-gray-200 rounded-lg shadow"
           >
               <img
                 className="rounded-t-lg"
-                src="https://i.pravatar.cc/200"
+                src={ card.image_url }
                 alt=""
                 style={{ width: '100%', height: '95px', objectFit: 'cover' }}
               />
@@ -56,17 +35,17 @@ export default function DoctorItems(props) {
               </div>
               <span className="text-gray-600 dark:text-gray-400 ml-1" style={{ fontSize: '12px' }}>
                 {/* Default rating label */}
-                {card.rating}
+                {card.rating} { Math.floor(Math.random() * 5) + 1 }
               </span>
               <span className="text-gray-600 dark:text-gray-400 ml-1" style={{ fontSize: '12px' }}>
                 {/* Default rating label */}
-                {card.numberOfPatients}
+                ({ Math.floor(Math.random() * 10) + 1 })
               </span>
             </div>
             <div className="flex items-center">
               <img src={jobIcon} alt="Your Image" width="12.5" height="12.5" />
               <p className="font-normal text-gray-700 dark:text-gray-400" style={{ fontSize: '12px', marginLeft: '8px' }}>
-                {card.position}
+                {/* {card.position} */} Doctor
               </p>
             </div>
             <div className="flex items-center">
@@ -76,7 +55,7 @@ export default function DoctorItems(props) {
       Experience
     </span>
     <span className="text-gray-800 dark:text-gray-300 font-medium" style={{ fontSize: '12px', fontWeight: '700' }}>
-      {card.numberOfExperience}
+      {card.experience} Years
     </span>
   </div>
   <div className="flex flex-col">
@@ -85,7 +64,7 @@ export default function DoctorItems(props) {
       Fees
     </span>
     <span style={{ whiteSpace: 'nowrap' }} className="text-gray-800 dark:text-gray-300 font-medium text-xs md:text-sm md:font-medium">
-      <b>{card.fees}</b>
+      <b>{card.fee} MMK</b>
     </span>
   </div>
 </div>
