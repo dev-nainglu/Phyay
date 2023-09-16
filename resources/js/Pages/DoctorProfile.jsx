@@ -1,6 +1,7 @@
 import { useId, useState } from "react";
 import ContainerLayout from "./ContainerLayout";
 import { useForm } from "@inertiajs/inertia-react";
+import { router } from '@inertiajs/react'
 
 export default function DoctorProfile(
 {
@@ -26,7 +27,8 @@ export default function DoctorProfile(
     }).catch((err)=>{
         console.log(err.response.error)
     });
-
+    console.log(userInfo)
+    console.log(doctor)
     const changeTimeslot = () => {
         let timeslot = document.getElementById("timeslot").value;
         setTimeslot(timeslot)
@@ -34,31 +36,41 @@ export default function DoctorProfile(
 
     const bookAppointment = (timeslot) => {
         setTimeslot(timeslot)
+        console.log(timeslot)
 
-        const booking = useForm({
-            name: patientName,
-            age: patientAge,
-            gender: gender,
-            timeslot: timeslot,
-            date: 'Sun 17',
-            doctor: 'Soe Thura'
+        const booking = {
+            doctor_id: doctor.id,
+            name: 'Naing Lu',
+            dob: '1998-09-17',
+            phone: '9966633112',
+            gender: 'Male',
+            appointment_start_date: "2023-09-17 10:00:00",
+            duration: 2,
+            price: doctor.fee * 2,
+            status: 'pending',
+        }
+        router.post('/appointment', booking).then((success) => {
+            console.log(success)
+        }).catch((err) => {
+            console.log(err)
         })
 
-        WaveSDK.paymentModule.walletBalance().then((success) => {
-            //if(){
-                WaveSDK.paymentModule.makePayment(amount, '9966633112', order_id).then((success) => {
-                    setAge(success.response.data.transactionId)
-                })
-            //}
-            booking.post('appointments');
-        });
+        // WaveSDK.paymentModule.walletBalance().then((success) => {
+        //     //if(){
+        //         WaveSDK.paymentModule.makePayment(amount, '9966633112', order_id).then((success) => {
+        //             setAge(success.response.data.transactionId)
+        //         })
+        //     //}
+        //     //booking.post('appointments');
+        // });
+
     }
 
     return (
         <>
             <ContainerLayout>
 
-                <div className="max-w-2xl mx-4 mt-16 bg-white shadow-xl rounded-lg text-gray-900">
+                <div className="max-w-2xl mx-2 mt-16 bg-white shadow-xl rounded-lg text-gray-900">
                     <div className="rounded-t-lg h-20 overflow-hidden">
                     </div>
                     <div className="mx-auto w-32 h-32 relative -mt-16 border-4 border-white rounded-full overflow-hidden">
@@ -66,7 +78,7 @@ export default function DoctorProfile(
                     </div>
                     <div className="text-center mt-2">
                         <h2 className="font-semibold">{doctor.name}</h2>
-                        <p className="text-gray-500">{doctor.category}</p>
+                        <p className="text-gray-500">{doctor.category_name}</p>
                     </div>
                     <ul className="py-4 mt-2 text-gray-700 flex items-center justify-around">
                         <li className="flex flex-col items-center justify-around">
@@ -110,7 +122,7 @@ export default function DoctorProfile(
                     </ul>
                 </div>
 
-                <div className="max-w-2xl mx-4 p-3 mt-1 bg-white shadow-xl rounded-lg text-gray-900">
+                <div className="max-w-2xl mx-2 p-3 mt-1 bg-white shadow-xl rounded-lg text-gray-900">
                     <h3><b>About Doctor</b></h3>
                     <p className="text-xs text-blue-900">
                         {doctor.name} is a top specialist at London Bridge Hospital at London. He has achieved several awards and recognition for is contribution and service in his own field. He is available for private consultation.
@@ -118,7 +130,7 @@ export default function DoctorProfile(
                 </div>
                 <div className="mt-6">
                     <h3 className="mx-4"><b>Available Date</b></h3>
-                    <div className="mx-2 grid grid-cols-7 gap-2 text-center">
+                    <div className="ml-1 mr-4 grid grid-cols-7 gap-2 text-center">
                         <button className="custom-button">
                             <p className="text-primary"><b>Sun</b></p>
                             <p className="text-secondary">17</p>
