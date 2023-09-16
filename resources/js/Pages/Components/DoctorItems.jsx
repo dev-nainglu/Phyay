@@ -1,7 +1,6 @@
 import React from 'react';
 import ratingIcon from '/resources/assets/Rating.svg'
 import jobIcon from '/resources/assets/Job.svg'
-import { random } from 'lodash';
 
 export default function DoctorItems(props) {
 

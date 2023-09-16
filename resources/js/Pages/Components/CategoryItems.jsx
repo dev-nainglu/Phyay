@@ -8,7 +8,6 @@ import ancietyIcon from '/resources/assets/MicrosoftTeams-image (16).png'
 import abuseIcon from '/resources/assets/MicrosoftTeams-image (17).png'
 
 export default function CategoryItems(props){
-    console.log(props.categories)
 
     const cards = [
         {
