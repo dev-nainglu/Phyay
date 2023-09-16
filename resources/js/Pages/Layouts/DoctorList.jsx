@@ -3,6 +3,7 @@ import HorizontalCategoryItems from '../Components/HorizontalCategoryItems';
 
 export default function Wall(props){
 
+    console.log('props on doctors', props);
     return (
         <>
             <div className="overflow-x-scroll pt-3 no-scrollbar">
