@@ -53,16 +53,16 @@ export default function DoctorProfile(
 
 
         WaveSDK.paymentModule.makePayment(amount, '9966633112', order_id).then((success) => {
-            setTimeslot(timeslot)
-            router.post('/appointment', booking).then((success) => {
-                console.log(success)
-            }).catch((err) => {
-                console.log(err)
-            })
-            setTransDate(success.response.data.transactionDate)
-            setTransID(success.response.data.transactionId)
+            // setTimeslot(timeslot)
+            // router.post('/appointment', booking).then((success) => {
+            //     console.log(success)
+            // }).catch((err) => {
+            //     console.log(err)
+            // })
+            // setTransDate(success.response.data.transactionDate)
+            // setTransID(success.response.data.transactionId)
             setShowPayment(true)
-            setApptID(1)
+            // setApptID(1)
         });
     }
 
@@ -201,14 +201,14 @@ export default function DoctorProfile(
                         <label htmlFor="message" className="block mt-4 mb-2 text-sm font-medium text-gray-900">Write your problem</label>
                         <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Leave a comment..."></textarea>
                         <button type="submit" onClick={() => bookAppointment(timeslot)} className="w-full mb-10 text-white mt-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Book Appointment</button>
-                        {/* <a
+                        <a
                         href={"/appointmentMake/" + 2}
                         // onClick={() => bookAppointment(timeslot)}
-                        > */}
-                       {/* <div className="w-full mb-10 text-white mt-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                        >
+                       <div className="w-full mb-10 text-white mt-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                        Book Appointment
-                       </div> */}
-                    {/* </a> */}
+                       </div>
+                    </a>
                     </div>
                 </div></div>
                 }
