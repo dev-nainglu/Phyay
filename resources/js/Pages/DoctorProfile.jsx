@@ -1,6 +1,7 @@
 import { useId, useState } from "react";
 import ContainerLayout from "./ContainerLayout";
 import { useForm } from "@inertiajs/inertia-react";
+import { router } from '@inertiajs/react'
 
 export default function DoctorProfile(
 {
@@ -26,7 +27,8 @@ export default function DoctorProfile(
     }).catch((err)=>{
         console.log(err.response.error)
     });
-
+    console.log(userInfo)
+    console.log(doctor)
     const changeTimeslot = () => {
         let timeslot = document.getElementById("timeslot").value;
         setTimeslot(timeslot)
@@ -34,24 +36,34 @@ export default function DoctorProfile(
 
     const bookAppointment = (timeslot) => {
         setTimeslot(timeslot)
+        console.log(timeslot)
 
         const booking = {
-            name: patientName,
-            age: patientAge,
-            gender: gender,
-            timeslot: timeslot,
-            date: 'Sun 17',
-            doctor: 'Soe Thura'
+            doctor_id: doctor.id,
+            name: 'Naing Lu',
+            dob: '1998-09-17',
+            phone: '9966633112',
+            gender: 'Male',
+            appointment_start_date: "2023-09-17 10:00:00",
+            duration: 2,
+            price: doctor.fee * 2,
+            status: 'pending',
         }
+        router.post('/appointment', booking).then((success) => {
+            console.log(success)
+        }).catch((err) => {
+            console.log(err)
+        })
 
-        WaveSDK.paymentModule.walletBalance().then((success) => {
-            //if(){
-                WaveSDK.paymentModule.makePayment(amount, '9966633112', order_id).then((success) => {
-                    setAge(success.response.data.transactionId)
-                })
-            //}
-            //booking.post('appointments');
-        });
+        // WaveSDK.paymentModule.walletBalance().then((success) => {
+        //     //if(){
+        //         WaveSDK.paymentModule.makePayment(amount, '9966633112', order_id).then((success) => {
+        //             setAge(success.response.data.transactionId)
+        //         })
+        //     //}
+        //     //booking.post('appointments');
+        // });
+
     }
 
     return (
@@ -66,7 +78,7 @@ export default function DoctorProfile(
                     </div>
                     <div className="text-center mt-2">
                         <h2 className="font-semibold">{doctor.name}</h2>
-                        <p className="text-gray-500">{doctor.category}</p>
+                        <p className="text-gray-500">{doctor.category_name}</p>
                     </div>
                     <ul className="py-4 mt-2 text-gray-700 flex items-center justify-around">
                         <li className="flex flex-col items-center justify-around">

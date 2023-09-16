@@ -8,22 +8,36 @@ use Inertia\Response;
 use Carbon\Carbon;
 use Jubaer\Zoom\Facades\Zoom;
 use App\Models\Appointment;
+use App\Models\Patient;
 
 class AppointmentController extends Controller
 {
     // store appointment
     public function store(Request $request)
     {
-        $request->validate([
-            'doctor_id' => 'required',
-            'patient_id' => 'required',
-            'appointment_start_time' => 'required|datetime|after:now',
-            'duration' => 'required|integer',
-            'price' => 'required|numeric',
-            'status' => 'required',
-        ]);
-        Appointment::create($request->all());
-        return redirect()->back()->with('success', 'Appointment created successfully.');
+        // create patient if not exists, otherwise get patient id from request using phone number
+        $patient = Patient::where('phone', $request->phone)->first();
+        if (!$patient) {
+            $patient = Patient::create([
+                'name' => $request->name,
+                'phone_number' => $request->phone,
+                'date_of_birth' => $request->dob,
+                'gender' => $request->gender
+            ]);
+        }
+        // separate data for appointment creation
+        $appointmentData = [
+            'patient_id' => $patient->id,
+            'doctor_id' => $request->doctor_id,
+            'appointment_start_date' => $request->appointment_start_date,
+            'duration' => $request->duration,
+            'status' => $request->status,
+            'price' => $request->price,
+        ];
+        // create appointment
+        $appointment = Appointment::create($appointmentData);
+        // go to appointment detail page
+        return to_route('appointment.show', $appointment->id);
     }
 
     private function createZoomMeeting($request): Response
@@ -98,6 +112,15 @@ class AppointmentController extends Controller
         return implode($pass); //turn the array into a string
     }
 
+    public function show(
+        string $id
+    ): Response {
+        $appointment = Appointment::with('doctor')->find($id);
+        return Inertia::render('AppointmentDetail', [
+            'appointment' => $appointment,
+        ]);
+    }
+
     // confirm appointment
     public function confirm(Request $request)
     {
@@ -117,12 +140,5 @@ class AppointmentController extends Controller
 
         $appointment->save();
         return redirect()->back()->with('success', 'Appointment confirmed successfully.');
-    }
-
-    // get appointment by id
-    public function show($id)
-    {
-        $appointment = Appointment::find($id);
-        return $appointment;
     }
 }

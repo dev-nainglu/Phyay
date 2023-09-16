@@ -16,8 +16,8 @@ class DoctorController extends Controller
 
     public function show(string $id): Response
     {
-        // query the doctor by id, exclude timestamps
-        $doctor = Doctor::with('category')->get();
+        // query the doctor by id, with category
+        $doctor = Doctor::with('category')->find($id);
         return Inertia::render('DoctorProfile', [
             'doctor' => $doctor,
         ]);
