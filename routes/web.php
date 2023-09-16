@@ -31,10 +31,12 @@ Route::get('/render', function () {
     return Inertia::render('ContainerLayout');
 });
 
-Route::get('wavelogin', [AuthenticatedSessionController::class, 'waveLogin'])
-    ->name('wavelogin');
+Route::get('wavelogin', function () {
+    return Inertia::render('WaveLoginLayout');
+})->name('wavelogin-from');
+
 Route::post('wavelogin', [AuthenticatedSessionController::class, 'waveLogin'])
-    ->name('wavelogin');
+            ->name('wavelogin');
 
 Route::middleware('waveuser')->group(function () {
     Route::get('/', [AppController::class, 'home'])->name('app.home');
