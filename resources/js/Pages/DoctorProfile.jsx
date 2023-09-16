@@ -42,17 +42,14 @@ export default function DoctorProfile(
             doctor: 'Soe Thura'
         }
 
-        const wavePaymentModule = WaveSDK.paymentModule;
-        const walletBalance = wavePaymentModule.walletBalance();
-        const transaction = wavePaymentModule.makePayment(amount, '9966633112', order_id)
-        // if(walletBalance.response.data.amount > amount){
-        //     const transaction = wavePaymentModule.makePayment(amount, '9966633112', order_id)
-        //     //setName(transaction.response.data.transactionId)
-        // }else{
-        //     setName(walletBalance.response.data.amount)
-        // }
-
-
+        WaveSDK.paymentModule.walletBalance().then((success) => {
+            setAge(parseInt(success.response.data.amount) > parentInt(amount))
+            //if(){
+                WaveSDK.paymentModule.makePayment(amount, '9966633112', order_id).then((success) => {
+                    setAge(success.response.data.transactionId)
+                })
+            //}
+        });
     }
 
     return (
