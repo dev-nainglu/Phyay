@@ -17,10 +17,9 @@ export default function WaveLoginLayout(props){
         setUserInfo(data)
 
         axios.post('/wavelogin', data).then((res)=>{
-            console.log(res)
-            return <Redirect to="/" />
+            window.location.href = "/"
         }).catch((err)=>{
-            console.log(err.response.error)
+            window.location.href = "/"
         });
 
 
