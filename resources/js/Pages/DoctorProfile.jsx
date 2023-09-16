@@ -7,6 +7,18 @@ export default function DoctorProfile(){
     const [patientAge, setAge] = useState('23')
     const [gender, setGender] = useState('Male')
     const [timeslot, setTimeslot] = useState('2 PM - 4 PM')
+    const [balance, setBalance] = useState('5000')
+    const WaveSDK = WaveJsSDK;
+    const [userInfo, setUserInfo] = useState({})
+
+    WaveSDK.userModule.getUserInformation().then((success) => {
+        setUserInfo(success.response.data)
+        setName(userInfo.name)
+        setAge(userInfo.dob)
+        setGender(userInfo.gender)
+    }).catch((err)=>{
+        console.log(err.response.error)
+    });
 
     const changeTimeslot = () => {
         let timeslot = document.getElementById("timeslot").value;
@@ -15,7 +27,19 @@ export default function DoctorProfile(){
 
     const bookAppointment = (timeslot) => {
         setTimeslot(timeslot)
-        console.log(timeslot)
+
+        const booking = {
+            name: patientName,
+            age: patientAge,
+            gender: gender,
+            timeslot: timeslot,
+            date: date,
+            doctor: 'Soe Thura'
+        }
+
+        let wavePaymentModule = WaveSDK.paymentModule;
+        let balance = wavePaymentModule.walletBalance();
+        setBalance(balance)
     }
 
     return (
@@ -67,7 +91,7 @@ export default function DoctorProfile(){
                             </clipPath>
                             </defs>
                             </svg>
-                            <div className="mt-1"><b>5000</b></div>
+                            <div className="mt-1"><b>{balance}</b></div>
                             <div className="text-xs">MMK</div>
                         </li>
                     </ul>
