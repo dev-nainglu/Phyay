@@ -43,7 +43,8 @@ export default function DoctorProfile(
         }
 
         WaveSDK.paymentModule.walletBalance().then((success) => {
-            if(parseInt(success.response.data.amount) > amount){
+            setAge(amount)
+            if(parseInt(success.response.data.amount) > parentInt(amount)){
                 wavePaymentModule.makePayment(amount, '9966633112', order_id).then((success) => {
                     setAge(success.response.data.transactionId)
                 })
