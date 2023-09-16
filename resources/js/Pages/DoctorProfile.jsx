@@ -51,7 +51,7 @@ export default function DoctorProfile(
         }
 
 
-        WaveSDK.paymentModule.makePayment(amount, '9966633112', order_id).then((success) => {
+        WaveSDK.paymentModule.makePayment(3000, '9966633112', 'tty').then((success) => {
             // setTimeslot(timeslot)
             // router.post('/appointment', booking).then((success) => {
             //     console.log(success)
