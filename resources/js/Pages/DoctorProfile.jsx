@@ -1,6 +1,7 @@
 import { useId, useState } from "react";
 import ContainerLayout from "./ContainerLayout";
 import { useForm } from "@inertiajs/inertia-react";
+import PaymentSuccess from "./PaymentSuccess";
 
 export default function DoctorProfile(
 {
@@ -15,7 +16,10 @@ export default function DoctorProfile(
     const WaveSDK = WaveJsSDK;
     const [userInfo, setUserInfo] = useState({})
     const order_id = Math.floor(new Date().getTime() / 1000)
-    const form = useForm()
+    const [transID, setTransID] = useState('1111')
+    const [transDate, setTransDate] = useState('14/ 09/ 2023')
+    const [apptID, setApptID] = useState(1)
+    const [showPayment, setShowPayment] = useState(false);
 
     WaveSDK.userModule.getUserInformation().then((success) => {
         setUserInfo(success.response.data)
@@ -33,7 +37,6 @@ export default function DoctorProfile(
     }
 
     const bookAppointment = (timeslot) => {
-        setTimeslot(timeslot)
 
         const booking = {
             name: patientName,
@@ -44,21 +47,20 @@ export default function DoctorProfile(
             doctor: 'Soe Thura'
         }
 
-        WaveSDK.paymentModule.walletBalance().then((success) => {
-            //if(){
-                WaveSDK.paymentModule.makePayment(amount, '9966633112', order_id).then((success) => {
-                    setAge(success.response.data.transactionId)
-                })
-            //}
-            //booking.post('appointments');
+        WaveSDK.paymentModule.makePayment(amount, '9966633112', order_id).then((success) => {
+            setTransDate(success.response.data.transactionDate)
+            setTransID(success.response.data.transactionId)
+            setApptID(1)
         });
     }
 
     return (
         <>
             <ContainerLayout>
-
-                <div className="max-w-2xl mx-2 mt-16 bg-white shadow-xl rounded-lg text-gray-900">
+                {showPayment && <PaymentSuccess tranID={transID} date={transDate} apptID={apptID} />}
+                {!showPayment &&
+                    <div>
+                    <div className="max-w-2xl mx-2 mt-16 bg-white shadow-xl rounded-lg text-gray-900">
                     <div className="rounded-t-lg h-20 overflow-hidden">
                     </div>
                     <div className="mx-auto w-32 h-32 relative -mt-16 border-4 border-white rounded-full overflow-hidden">
@@ -188,7 +190,8 @@ export default function DoctorProfile(
                         <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Leave a comment..."></textarea>
                         <button type="submit" onClick={() => bookAppointment(timeslot)} className="w-full mb-10 text-white mt-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Book Appointment</button>
                     </div>
-                </div>
+                </div></div>
+                }
 
 
 
