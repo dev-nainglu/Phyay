@@ -35,11 +35,11 @@ export default function DoctorItems(props) {
               </div>
               <span className="text-gray-600 dark:text-gray-400 ml-1" style={{ fontSize: '12px' }}>
                 {/* Default rating label */}
-                {card.rating} { Math.floor(Math.random() * 5) + 1 }
+                {card.rating} 2.5
               </span>
               <span className="text-gray-600 dark:text-gray-400 ml-1" style={{ fontSize: '12px' }}>
                 {/* Default rating label */}
-                ({ Math.floor(Math.random() * 10) + 1 })
+                (12)
               </span>
             </div>
             <div className="flex items-center">
