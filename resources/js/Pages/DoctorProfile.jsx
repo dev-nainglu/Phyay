@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ContainerLayout from "./ContainerLayout";
 import { router } from '@inertiajs/react'
+import AppointmentConfirm from "./AppointmentConfirm";
 
 export default function DoctorProfile(
 {
@@ -29,14 +30,12 @@ export default function DoctorProfile(
     }).catch((err)=>{
         console.log(err.response.error)
     });
-    console.log(userInfo)
-    console.log(doctor)
     const changeTimeslot = () => {
         let timeslot = document.getElementById("timeslot").value;
         setTimeslot(timeslot)
     }
 
-    const bookAppointment = (timeslot) => {
+    const bookAppointment = async (timeslot) => {
 
         const booking = {
             doctor_id: doctor.id,
@@ -47,28 +46,21 @@ export default function DoctorProfile(
             appointment_start_date: "2023-09-17 10:00:00",
             duration: 2,
             price: doctor.fee * 2,
-            status: 'pending',
+            status: 'upcoming',
         }
 
+        console.log(order_id)
+        setShowPayment(true)
 
-        WaveSDK.paymentModule.makePayment(3000, '9966633112', 'tty').then((success) => {
-            // setTimeslot(timeslot)
-            // router.post('/appointment', booking).then((success) => {
-            //     console.log(success)
-            // }).catch((err) => {
-            //     console.log(err)
-            // })
-            // setTransDate(success.response.data.transactionDate)
-            // setTransID(success.response.data.transactionId)
-            setShowPayment(true)
-            // setApptID(1)
-        });
+        const response = await WaveSDK.paymentModule.makePayment(3000, '9966633112', 'tty');
+        setTransID(response.response.data.transactionId)
+        router.post('/appointment', booking)
     }
 
     return (
         <>
             <ContainerLayout>
-                {showPayment && <PaymentSuccess tranID={transID} date={transDate} apptID={apptID} />}
+                {showPayment && <AppointmentConfirm tranID={transID} date={transDate} apptID={apptID} />}
                 {!showPayment &&
                     <div>
                     <div className="max-w-2xl mx-2 mt-16 bg-white shadow-xl rounded-lg text-gray-900">

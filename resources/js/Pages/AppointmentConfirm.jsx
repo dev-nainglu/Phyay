@@ -14,14 +14,14 @@ export default function AppointmentConfirm(props){
                     </svg>
                     <div>
                         <h3 className="md:text-2xl text-base text-gray-900 font-semibold text-center">Payment Success!</h3>
-                        <p className="text-center text-black-900">Thank you for your booking.</p>
+                        <p className="text-center text-black-900">{props.transID}</p>
                     </div>
                 </div>
             </div>
             <AppoinmentStatusCard />
             <div class="mt-6 flex flex-nowrap">
                 <a href="/" class="w-1/2 text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">Close</a>
-                <a href={"/appointments/" + props.apptID} class="w-1/2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">View Appointment</a>
+                <a href={"/appointments/" + props.apptID} class="w-1/2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 text-center focus:outline-none">View</a>
             </div>
         </ContainerLayout>
         </>
