@@ -20,12 +20,12 @@ class WaveUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // 'name'     => 'required|string|max:255',
-            // 'dob'      => 'required',
-            // 'nrc'      => 'nullable',
-            // 'msisdn'   => 'required',
-            // 'gender'   => 'nullable',
-            // 'kyc_status' => 'required',
+            'name'     => 'required|string|max:255',
+            'dob'      => 'required',
+            'nrc'      => 'nullable',
+            'msisdn'   => 'required',
+            'gender'   => 'nullable',
+            'kyc_status' => 'required',
         ];
 
     }
@@ -34,20 +34,13 @@ class WaveUserRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        // $phoneNumber = $this->get('msisdn');
-        $phoneNumber = '+959796279069';
+        $phoneNumber = $this->get('msisdn');
         $user = Patient::updateOrCreate(['phone_number'=> $phoneNumber],[
-            // 'name'     => $this->get('name'),
-            // 'date_of_birth' => $this->get('dob'),
-            // 'gender'    => $this->get("gender"),
-            'name'     => 'Ko Mya Gyi',
-            'date_of_birth' => '1990-04-18',
-            'gender'    => 'Male',
-
+            'name'     => $this->get('name'),
+            'date_of_birth' => $this->get('dob'),
+            'gender'    => $this->get("gender"),
             'phone_number'   => $phoneNumber,
         ]);
-
-        info('user', [$user]);
 
         Auth::login($user);
 

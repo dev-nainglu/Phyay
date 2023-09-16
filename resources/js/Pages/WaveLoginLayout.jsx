@@ -1,70 +1,53 @@
 
-import ContainerLayout from './ContainerLayout';
 import { useState } from "react";
-import { useForm } from '@inertiajs/inertia-react';
+import { router } from '@inertiajs/react';
+import consultIcon from '/resources/assets/MicrosoftTeams-image (19).png'
 
 export default function WaveLoginLayout(props){
 
-    const [activeTab, setValue] = useState('home')
     const WaveSDK = WaveJsSDK;
     const [userInfo, setUserInfo] = useState({})
-
-    // print csrf token
-    // console.log('sssss',props)
 
     WaveSDK.userModule.getUserInformation().then((success) => {
         const data = success.response.data
         setUserInfo(data)
-
-        axios.post('/wavelogin', data).then((res)=>{
-            window.location.href = "/"
-        }).catch((err)=>{
-            window.location.href = "/"
-        });
-
-
-
+        router.post('/wavelogin', data)
     }).catch((err)=>{
-        console.log(err.response.error)
-        const form = useForm(userInfo)
-        form.post('/wavelogin')
+        router.post('/wavelogin', {
+            "dob": "1999-04-28",
+            "name": "Naing Lu",
+            "nrc": "12/AhSaNa(N)194052",
+            "msisdn": "9796279069",
+            "gender": "Male", 
+            "kyc_status": "LEVEL_2",
+        })
     });
 
     return(
         <>
-        <ContainerLayout>
-            <div className="pt-10"></div>
-            <div className="flex flex-col items-center justify-center">
-                <div className="w-full max-w-md">
-                    <div className="flex flex-col break-words bg-white border-2 rounded shadow-md">
-                        <div className="font-semibold bg-gray-200 text-gray-700 py-3 px-6 mb-0">
-                            Login with Wave
+        <div id="sticky-banner" tabIndex="-1" className="fixed top-0 left-0 z-50 justify-between w-full p-4 border-b border-gray-200 bg-gray-50">
+            <div className="flex items-center mx-auto">
+                <p className="flex items-center text-sm font-normal text-gray-500 dark:text-gray-400">
+                    <span>Welcome, <a href="#" className="inline font-medium text-blue-600 underline dark:text-blue-500 underline-offset-2 decoration-600 dark:decoration-500 decoration-solid hover:no-underline">{userInfo.name}!</a></span>
+                </p>
+            </div>
+        </div>
+        <hr className="h-px my-2 bg-gray-300 border-0"></hr>
+            <main className="mx-3">
+                <div className="mt-[80px]">
+                    <div className="pt-1"></div>
+                    <div className="mt-3 flex flex-row items-center bg-white h-30 border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100">
+                        <div className="flex-col justify-between p-4 leading-normal">
+                            <h5 className="mb-2 text-md font-bold tracking-tight text-gray-900">
+                                Login with Wave Account
+                            </h5>
+                            <p className="mb-3 text-sm font-normal text-gray-700">Consult with top doctors over video calls and recover your mental health.</p>
+                            <div className="mt-10"></div>
                         </div>
-                        <div className="w-full p-6">
-                            Logging in with Wave is the easiest way to use our services.
-                            <form action="/wavelogin" method='POST' id="waveLoginForm">
-
-                                <input type="text" name="name" value={userInfo.name} hidden/>
-                                <input type="text" name="email" value={userInfo.email} hidden/>
-                                <input type="text" name="nrc" value={userInfo.nrc} hidden/>
-                                <input type="text" name="msisdn" value={userInfo.msisdn} hidden/>
-                                <input type="text" name="gender" value={userInfo.gender} hidden/>
-                                <input type="text" name="kyc_status" value={userInfo.kyc_status} hidden/>
-                                <input type="text" name="dob" value={userInfo.dob} hidden/>
-                                <input type="text" name="address" value={userInfo.address} hidden/>
-                                <input type="text" name="csrf-token" value={window.csrf_token} hidden/>
-                                <input type="text" name="_token" value={window.csrf_token} hidden/>
-                            </form>
-                        </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-center mt-10">
-                        <div className="text-gray-500 text-xs">
-                            &copy;2021 Onenex. All rights reserved.
-                        </div>
+                        <img className="object-cover w-full rounded-t-lg h-20 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src={consultIcon} alt="" />
                     </div>
                 </div>
-            </div>
-        </ContainerLayout>
+            </main>
         </>
     )
 }
