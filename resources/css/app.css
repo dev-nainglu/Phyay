@@ -18,8 +18,8 @@
   }
 
   .custom-button {
-    width: 43px;
-    height: 80px;
+    width: 60px;
+    height: 80px; 
     margin: 6px; /* Add spacing between buttons */
     text-align: center;
     border: 1px solid #ccc; /* Dimmed border color (#999) */
