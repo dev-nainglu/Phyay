@@ -15,11 +15,6 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
 
-        $waveUser = $request->session()->get('waveUser');
-        if($waveUser){
-            Auth::login($waveUser);
-            info('home user', [Auth::user()]);
-        }
         
         if (! $request->expectsJson()) {
             return route('login');
