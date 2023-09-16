@@ -31,7 +31,7 @@ class AppointmentResource extends Resource
     // hide create button
     public static function canCreate(): bool
     {
-        return false;
+        return true;
     }
 
     public static function form(Form $form): Form
@@ -71,6 +71,7 @@ class AppointmentResource extends Resource
                     ->numeric()
                     ->minValue(0)
                     ->maxValue(3)
+                    ->default(1)
                     ->placeholder(__('Duration'))
                     ->suffix(__('hours')),
                 Select::make('status')
@@ -121,10 +122,6 @@ class AppointmentResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->label('Start Time'),
-                TextColumn::make('appointment_end_date')
-                    ->dateTime()
-                    ->sortable()
-                    ->label('End Time'),
                 TextColumn::make('duration')
                     ->sortable()
                     // conditional suffix
