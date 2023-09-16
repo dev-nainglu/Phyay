@@ -46,7 +46,9 @@ export default function DoctorProfile(
         const walletBalance = wavePaymentModule.walletBalance();
         if(walletBalance.response.data.amount > amount){
             const transaction = wavePaymentModule.makePayment(amount, '9966633112', order_id)
-            setName(transaction.response.data.transactionId)
+            //setName(transaction.response.data.transactionId)
+        }else{
+            setName(walletBalance.response.data.amount)
         }
 
 
@@ -55,6 +57,7 @@ export default function DoctorProfile(
     return (
         <>
             <ContainerLayout>
+
                 <div className="max-w-2xl mx-4 mt-16 bg-white shadow-xl rounded-lg text-gray-900">
                     <div className="rounded-t-lg h-20 overflow-hidden">
                     </div>
@@ -186,6 +189,8 @@ export default function DoctorProfile(
                         <button type="submit" onClick={() => bookAppointment(timeslot)} className="w-full mb-10 text-white mt-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Book Appointment</button>
                     </div>
                 </div>
+
+
 
 
             </ContainerLayout>
