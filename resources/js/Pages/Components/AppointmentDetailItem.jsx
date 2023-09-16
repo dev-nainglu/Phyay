@@ -1,59 +1,108 @@
+export default function AppointmentDetail(props){
+    return(
+        <>
 
-import React from 'react';
+<div class="w-full mt-2 p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8">
+    <div class="flex items-center justify-between mb-4">
+        <h5 class="text-xl font-bold leading-none text-gray-900">Appointment Detail</h5>
 
-// Reusable component for a flex row with two items
-const FlexRow = ({ leftContent, rightContent }) => (
-  <div className="flex justify-between">
-    <div className="text-black w-40 h-10 m-2 flex items-center">{leftContent}</div>
-    <div className="text-black w-40 h-10 m-2 flex items-center justify-end">{rightContent}</div>
-  </div>
-);
-
-const AppointmentDetails = () => (
-  <>
-  <div className="pt-6 items-start">
-   Scheduled Appointment
-    </div>
-    
-    <div className="flex flex-col items-center p-1">
-      <FlexRow leftContent="Time" rightContent="01:20 - 2:30" />
-      <FlexRow leftContent="Patient Info" />
-      <FlexRow leftContent="Full Name" rightContent="Naing Lu" />
-      <FlexRow leftContent="Gender" rightContent="Male" />
-      <FlexRow leftContent="Age" rightContent="28" />
-    </div>
-    <div className="text-black">Reason</div>
-        <div className="pt-2">
-          I have been experiencing persistent feelings of sadness, hopelessness, and anxiety for several months, which are affecting my daily life, relationships, and overall well-being. I believe therapy could help me better understand and manage these emotions and provide me with the tools to improve my mental health.
-        </div>
-        <div className="text-black mt-3"><b>Zoom Link</b></div>
-        <div className="mt-3 text-black">Copy and paste Zoon link in your browser to call with doctor.</div>
-        <form className="mt-3">   
-            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-            <div class="relative">
-                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                    {/* <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                    </svg> */}
-                </div>
-                <input type="search" id="default-search" className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  style={{ borderColor: '#5185FE', borderRadius: 17 }}/>
-                <button type="submit" class="text-white absolute right-2.5 bottom-2.5 over:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" style={{ borderColor: '#5185FE', borderRadius: 17 }}>
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="currentColor"
-                  className="w-4 h-4 mr-2"
-                >
-                  <path
-                    d="M6 12C5.45 12 4.97917 11.8042 4.5875 11.4125C4.19583 11.0208 4 10.55 4 10V2C4 1.45 4.19583 0.979167 4.5875 0.5875C4.97917 0.195833 5.45 0 6 0H14C14.55 0 15.0208 0.195833 15.4125 0.5875C15.8042 0.979167 16 1.45 16 2V10C16 10.55 15.8042 11.0208 15.4125 11.4125C15.0208 11.8042 14.55 12 14 12H6ZM6 2V10H14V2H6ZM2 16C1.45 16 0.979167 15.8042 0.5875 15.4125C0.195833 15.0208 0 14.55 0 14V4.525H2V14H11.475V16H2Z"
-                    fill="#5185FE"
-                  />
-                </svg>
-                </button>
             </div>
-        </form>
-  </>
-);
+            <div class="flow-root">
+                    <ul role="list" class="divide-y divide-gray-200">
+                        <li class="py-3 sm:py-4">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex-shrink-0">
+                                    <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Neil image"/>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-sm font-medium text-gray-900 truncate">
+                                        Neil Sims
+                                    </p>
+                                    <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                                        email@windster.com
+                                    </p>
+                                </div>
+                                <div class="inline-flex items-center text-base font-semibold text-gray-900">
+                                    $320
+                                </div>
+                            </div>
+                        </li>
+                        <li class="py-3 sm:py-4">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex-shrink-0">
+                                    <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="Bonnie image" />
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-sm font-medium text-gray-900 truncate">
+                                        Bonnie Green
+                                    </p>
+                                    <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                                        email@windster.com
+                                    </p>
+                                </div>
+                                <div class="inline-flex items-center text-base font-semibold text-gray-900">
+                                    $3467
+                                </div>
+                            </div>
+                        </li>
+                        <li class="py-3 sm:py-4">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex-shrink-0">
+                                    <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-2.jpg" alt="Michael image" />
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-sm font-medium text-gray-900 truncate">
+                                        Michael Gough
+                                    </p>
+                                    <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                                        email@windster.com
+                                    </p>
+                                </div>
+                                <div class="inline-flex items-center text-base font-semibold text-gray-900">
+                                    $67
+                                </div>
+                            </div>
+                        </li>
+                        <li class="py-3 sm:py-4">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex-shrink-0">
+                                    <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-4.jpg" alt="Lana image" />
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-sm font-medium text-gray-900 truncate">
+                                        Lana Byrd
+                                    </p>
+                                    <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                                        email@windster.com
+                                    </p>
+                                </div>
+                                <div class="inline-flex items-center text-base font-semibold text-gray-900">
+                                    $367
+                                </div>
+                            </div>
+                        </li>
+                        <li class="pt-3 pb-0 sm:pt-4">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex-shrink-0">
+                                    <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt="Thomas image" />
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-sm font-medium text-gray-900 truncate">
+                                        Thomes Lean
+                                    </p>
+                                    <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                                        email@windster.com
+                                    </p>
+                                </div>
+                                <div class="inline-flex items-center text-base font-semibold text-gray-900">
+                                    $2367
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+            </div>
+            </div>
 
-export default AppointmentDetails;
+        </>
+    )
+}

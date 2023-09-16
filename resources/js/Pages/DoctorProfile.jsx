@@ -1,6 +1,7 @@
-import { useId, useState } from "react";
+import { useState } from "react";
 import ContainerLayout from "./ContainerLayout";
-import { useForm } from "@inertiajs/inertia-react";
+import { router } from '@inertiajs/react'
+import AppointmentConfirm from "./AppointmentConfirm";
 
 export default function DoctorProfile(
 {
@@ -15,7 +16,11 @@ export default function DoctorProfile(
     const WaveSDK = WaveJsSDK;
     const [userInfo, setUserInfo] = useState({})
     const order_id = Math.floor(new Date().getTime() / 1000)
-    const form = useForm()
+    const [transID, setTransID] = useState('1111')
+    const [transDate, setTransDate] = useState('14/ 09/ 2023')
+    const [apptID, setApptID] = useState(1)
+    const [showPayment, setShowPayment] = useState(false);
+    const [text, setText] = useState('all')
 
     WaveSDK.userModule.getUserInformation().then((success) => {
         setUserInfo(success.response.data)
@@ -26,39 +31,42 @@ export default function DoctorProfile(
     }).catch((err)=>{
         console.log(err.response.error)
     });
-
     const changeTimeslot = () => {
         let timeslot = document.getElementById("timeslot").value;
         setTimeslot(timeslot)
     }
 
-    const bookAppointment = (timeslot) => {
-        setTimeslot(timeslot)
+    const bookAppointment = async (timeslot) => {
 
         const booking = {
-            name: patientName,
-            age: patientAge,
-            gender: gender,
-            timeslot: timeslot,
-            date: 'Sun 17',
-            doctor: 'Soe Thura'
+            doctor_id: doctor.id,
+            name: 'Naing Lu',
+            dob: '1998-09-17',
+            phone: '9966633112',
+            gender: 'Male',
+            appointment_start_date: "2023-09-17 10:00:00",
+            duration: 2,
+            price: doctor.fee * 2,
+            status: 'upcoming',
         }
 
-        WaveSDK.paymentModule.walletBalance().then((success) => {
-            //if(){
-                WaveSDK.paymentModule.makePayment(amount, '9966633112', order_id).then((success) => {
-                    setAge(success.response.data.transactionId)
-                })
-            //}
-            //booking.post('appointments');
-        });
+
+        const response = await WaveJsSDK.paymentModule?.makePayment(amount, '9784489866', order_id)
+        const data = response?.response.data
+
+        if (data) setText(data)
+        setShowPayment(true)
+
+        router.post('/appointment', booking)
     }
 
     return (
         <>
             <ContainerLayout>
-
-                <div className="max-w-2xl mx-2 mt-16 bg-white shadow-xl rounded-lg text-gray-900">
+                {showPayment && <AppointmentConfirm tranID={transID} date={transDate} apptID={apptID} />}
+                {!showPayment &&
+                    <div>
+                    <div className="max-w-2xl mx-2 mt-16 bg-white shadow-xl rounded-lg text-gray-900">
                     <div className="rounded-t-lg h-20 overflow-hidden">
                     </div>
                     <div className="mx-auto w-32 h-32 relative -mt-16 border-4 border-white rounded-full overflow-hidden">
@@ -66,7 +74,7 @@ export default function DoctorProfile(
                     </div>
                     <div className="text-center mt-2">
                         <h2 className="font-semibold">{doctor.name}</h2>
-                        <p className="text-gray-500">{doctor.category}</p>
+                        <p className="text-gray-500">{doctor.category_name}</p>
                     </div>
                     <ul className="py-4 mt-2 text-gray-700 flex items-center justify-around">
                         <li className="flex flex-col items-center justify-around">
@@ -110,15 +118,15 @@ export default function DoctorProfile(
                     </ul>
                 </div>
 
-                <div className="max-w-2xl mx-2 p-3 mt-1 bg-white shadow-xl rounded-lg text-gray-900">
+                <div className="max-w-2xl mx-1 p-3 mt-1 text-gray-900">
                     <h3><b>About Doctor</b></h3>
-                    <p className="text-xs text-blue-900">
+                    <p className="mt-3 text-xs text-gray-900" style={{fontSize: '14px', fontWeight: '400' }}>
                         {doctor.name} is a top specialist at London Bridge Hospital at London. He has achieved several awards and recognition for is contribution and service in his own field. He is available for private consultation.
                     </p>
                 </div>
-                <div className="mt-6">
+                <div className="mt-3">
                     <h3 className="mx-4"><b>Available Date</b></h3>
-                    <div className="ml-1 mr-4 grid grid-cols-7 gap-2 text-center">
+                    <div className="ml-1 mr-3 grid grid-cols-5 gap-2 text-center">
                         <button className="custom-button">
                             <p className="text-primary"><b>Sun</b></p>
                             <p className="text-secondary">17</p>
@@ -139,14 +147,14 @@ export default function DoctorProfile(
                             <p className="text-primary"><b>Thu</b></p>
                             <p className="text-secondary">21</p>
                         </button>
-                        <button className="custom-button">
+                        {/* <button className="custom-button">
                             <p className="text-primary"><b>Fri</b></p>
                             <p className="text-secondary">22</p>
                         </button>
                         <button className="custom-button">
                             <p className="text-primary"><b>Sun</b></p>
                             <p className="text-secondary">23</p>
-                        </button>
+                        </button> */}
                     </div>
                     <div className="mx-3">
                         <h3 className="mt-6"><b>Time Slot</b></h3>
@@ -185,14 +193,11 @@ export default function DoctorProfile(
                         </fieldset>
 
                         <label htmlFor="message" className="block mt-4 mb-2 text-sm font-medium text-gray-900">Write your problem</label>
-                        <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Leave a comment..."></textarea>
+                        <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Leave a comment...">{text}</textarea>
                         <button type="submit" onClick={() => bookAppointment(timeslot)} className="w-full mb-10 text-white mt-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Book Appointment</button>
                     </div>
-                </div>
-
-
-
-
+                </div></div>
+                }
             </ContainerLayout>
         </>
     );
