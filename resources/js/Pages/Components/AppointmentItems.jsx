@@ -19,12 +19,18 @@ export default function AppointmentItems(props) {
     <>
             <div className="grid grid-row-1 gap-2" key="">
             {cards.map((card, index) => (
-                <div key={index} className="bg-white h-50 border border-gray-200 rounded-lg shadow hover:bg-gray-100">
+                 <a href={`/appointments/${index}`} key={index} className="bg-white h-50 border border-gray-200 rounded-lg shadow hover:bg-gray-100">
                     <div className="flex flex-row items-center">
-                    <img className="object-cover rounded-t-lg h-40 md:h-auto w-70 md:rounded-none md:rounded-l-lg"
-                    src="https://i.pravatar.cc/200" alt="" />
+                    <img src="https://i.pravatar.cc/200" alt="Your Image" className="pl-2 w-1/2 h-15" style={{borderRadius: 14, height: 100, width: 100}} />
                     <div className="justify-between p-4 leading-normal">
-                        <h5 className="text-md font-bold tracking-tight text-gray-900">{card.name}</h5>
+                <div className="justify-between leading-normal flex items-center">
+                    {/* Card Title */}
+                    <h5 className="text-md font-bold tracking-tight text-gray-900">{card.name}</h5>
+                    {/* Rounded Chip View */}
+                    <div className="bg-yellow-200 px-2 py-1 rounded-full ml-2 text-xs text-yellow-800">
+                        Upcoming
+                    </div>
+                </div>
                         <p className="text-sm tracking-tight text-gray-400">Sleeping Disorder</p>
                         <div className="my-1 flex items-center">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,25 +56,11 @@ export default function AppointmentItems(props) {
                                 {card.time}
                             </p>
                         </div>
-                        <div className='mt-[30px]'>
-                            <a
-                                href={"/appointments/" + index}
-                                className="px-3 py-2 text-center text-sm font-medium rounded-lg hover:bg-blue-800 hover:text-white-700"
-                                style={{ color:'#5185FE', border: '2px solid #5185FE', textAlign: 'center' }}
-                                >
-                                View Appointment
-                            </a>
-
-                        </div>
-
                     </div>
-
                     </div>
                     <div>
-
                     </div>
-                </div>
-
+                     </a>
             ))}
             </div>
 
@@ -78,3 +70,11 @@ export default function AppointmentItems(props) {
     </>
   );
 }
+
+{/* <a
+                                href={"/appointments/" + index}
+                                className="px-3 py-2 text-center text-sm font-medium rounded-lg hover:bg-blue-800 hover:text-white-700"
+                                style={{ color:'#5185FE', border: '2px solid #5185FE', textAlign: 'center' }}
+                                >
+                                View Appointment
+                            </a> */}
