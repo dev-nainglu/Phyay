@@ -33,7 +33,7 @@ class AppController extends Controller
     {
         // $patientId = Auth::user()->id;
         $patientId = Patient::where('name', 'Naing Lu')->first();
-        return Appointment::with(['doctor'])->where('patient_id', $patientId)->get();
+        return Appointment::with(['doctor'])->get();
     }
 
 
